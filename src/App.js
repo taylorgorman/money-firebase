@@ -22,7 +22,6 @@ const firestore = firebase.firestore()
 
 export default function App() {
   const [user, loading, error] = useAuthState(auth);
-  console.log({ user, loading, error });
 
   return (
     <>
@@ -31,9 +30,13 @@ export default function App() {
         <div>{user?.displayName}</div>
         <div>{user ? <SignOutButton /> : <SignInButton />}</div>
       </header>
-      <main>{user ? <p>Welcome!</p> : <p>You are not logged in.</p>}</main>
+      <main>
+        {error && <p><strong>useAuthState Error:</strong> {error}</p>}
+        {loading && <p>Loading...</p>}
+        {user ? <p>Welcome!</p> : <p>You are not logged in.</p>}
+      </main>
     </>
-  );
+  )
 }
 
 function SignInButton() {
