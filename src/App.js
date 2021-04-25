@@ -6,7 +6,13 @@ import 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 
-if (firebase.apps.length === 0) { // for react dev live refresh
+// global utilities
+const isFirebaseInitialized = firebase.apps.length > 0;
+const isDevelopEnv = process.env.NODE_ENV === "development";
+const isProductionEnv = process.env.NODE_ENV === "production";
+
+// initialize firebase
+if ( ! isFirebaseInitialized ) {
   firebase.initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -18,13 +24,14 @@ if (firebase.apps.length === 0) { // for react dev live refresh
   });
 }
 
+// global firebase tools
 const auth = firebase.auth()
 const firestore = firebase.firestore()
 
-if (process.env.NODE_ENV === 'development') {
-  console.log("process.env.NODE_ENV === 'development'")
-  auth.useEmulator("http://localhost:9099")
-  firestore.useEmulator("localhost", 8080)
+// use firebase emulators in develop
+if (!isFirebaseInitialized && isDevelopEnv) {
+  auth.useEmulator("http://localhost:9099");
+  firestore.useEmulator("localhost", 8080);
 }
 
 
