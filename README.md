@@ -18,3 +18,5 @@
 1. `yarn add firebase react-firebase-hooks`
 1. `firebase init` (WOW that has gotten WAY more robust!)
 1. Used react-firebase-hooks and YouTube video (Resources.1) to finish basic auth in like 10 minutes!
+1. Used react-firebase-hooks and YouTube video (Resources.1) to setup basic database read/write.
+1. Set up emulators for local dev. That was super quick.

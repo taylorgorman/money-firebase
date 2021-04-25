@@ -21,6 +21,13 @@ if (firebase.apps.length === 0) { // for react dev live refresh
 const auth = firebase.auth()
 const firestore = firebase.firestore()
 
+if (process.env.NODE_ENV === 'development') {
+  console.log("process.env.NODE_ENV === 'development'")
+  auth.useEmulator("http://localhost:9099")
+  firestore.useEmulator("localhost", 8080)
+}
+
+
 export default function App() {
   const [user, loading, error] = useAuthState(auth);
 
