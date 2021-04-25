@@ -9,7 +9,6 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 // global utilities
 const isFirebaseInitialized = firebase.apps.length > 0;
 const isDevelopEnv = process.env.NODE_ENV === "development";
-const isProductionEnv = process.env.NODE_ENV === "production";
 
 // initialize firebase
 if ( ! isFirebaseInitialized ) {
