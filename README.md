@@ -2,6 +2,14 @@
 
 > A personal finance app and also me trying to figure out React + Firebase
 
+## To Do
+1. Get functions working in emulator - `yarn install`
+1. Write a function (or wait until I need one to do this)
+1. How do I want/need to use the hosting emulator?
+1. Do "preview" deployments on PRs work as expected?
+1. Write firestore rules such that users can only see their own data
+1. Start throwing up some functionality! No real styles yet, just make it work.
+
 ## Resources
 1. https://www.youtube.com/watch?v=zQyrwxMPm88
 
