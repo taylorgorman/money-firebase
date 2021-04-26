@@ -86,17 +86,21 @@ function SignOutButton() {
 
 function Messages() {
 
+  const [user] = useAuthState(auth);
   const messagesCollection = firestore.collection('messages')
-  const query = messagesCollection.orderBy('createdAt', 'desc').limit(25)
-  const [messages, loading, error] = useCollectionData(query, { idField: 'id' })
+  const query = messagesCollection
+    .where("uid", "==", user.uid)
+    .orderBy("createdAt", "desc")
+  const [messages, loading, error] = useCollectionData(query, {idField: "id"})
 
   const [newMessage, setNewMessage] = useState('')
   async function createMessage(event) {
     event.preventDefault()
     console.log('newMessage', newMessage)
     await messagesCollection.add({
+      uid: user.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       text: newMessage,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
     })
     setNewMessage('')
   }
@@ -107,7 +111,7 @@ function Messages() {
       {error && (
         <p>
           <em>
-            <strong>useAuthState Error:</strong> {JSON.stringify(error)}
+            <strong>useCollectionData Error:</strong> {JSON.stringify(error)}
           </em>
         </p>
       )}
@@ -124,11 +128,7 @@ function Messages() {
 
       <h3>Messages</h3>
       {messages ? (
-        messages.map((message) => (
-          <p key={message.id}>
-            {message.text}
-          </p>
-        ))
+        messages.map((message) => <p key={message.id}>{message.text}</p>)
       ) : (
         <p>Aw nuts, there are none.</p>
       )}
