@@ -2,6 +2,11 @@
 
 > A personal finance app and also me trying to figure out React + Firebase
 
+#
+
+![Build](https://github.com/taylorgorman/money-firebase/actions/workflows/build.yml/badge.svg)
+![Deploy to production](https://github.com/taylorgorman/money-firebase/actions/workflows/firebase-hosting-merge.yml/badge.svg)
+
 ## Competitors
 - https://www.monarchmoney.com
 
