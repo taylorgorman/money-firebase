@@ -8,8 +8,8 @@
 ![Codecov](https://img.shields.io/codecov/c/github/taylorgorman/money-firebase)
 [![Inline docs](http://inch-ci.org/github/taylorgorman/money-firebase.svg?branch=production)](http://inch-ci.org/github/taylorgorman/money-firebase)
 ![GitHub package.json version, production](https://img.shields.io/github/package-json/v/taylorgorman/money-firebase/production)
-[![Build](https://github.com/taylorgorman/money-firebase/actions/workflows/build.yml/badge.svg?branch=production)](https://github.com/taylorgorman/money-firebase/actions/workflows/build.yml)
-[![Deploy to production](https://github.com/taylorgorman/money-firebase/actions/workflows/deploy-production.yml/badge.svg)](https://github.com/taylorgorman/money-firebase/actions/workflows/deploy-production.yml)
+[![Build](https://github.com/taylorgorman/money-firebase/actions/workflows/build.yml/badge.svg?branch=production)](https://github.com/taylorgorman/money-firebase/actions/workflows/build.yml?query=branch:production)
+[![Deploy to production](https://github.com/taylorgorman/money-firebase/actions/workflows/deploy-production.yml/badge.svg?branch=production)](https://github.com/taylorgorman/money-firebase/actions/workflows/deploy-production.yml?query=branch:production)
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmoney-firebase.web.app%2F)
 ![GitHub last commit](https://img.shields.io/github/last-commit/taylorgorman/money-firebase)
 
