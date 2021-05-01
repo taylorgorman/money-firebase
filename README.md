@@ -2,7 +2,11 @@
 
 > A personal finance app and also me trying to figure out React + Firebase
 
+## Competitors
+- https://www.monarchmoney.com
+
 ## To Do
+1. Change favicon
 1. Get functions working in emulator - `yarn install`
 1. Write a function (or wait until I need one to do this)
 1. How do I want/need to use the hosting emulator?
