@@ -54,15 +54,8 @@ export default function App() {
             </em>
           </p>
         )}
-        {loading && <p>Loading...</p>}
-        {user ? (
-          <>
-            <p>Welcome!</p>
-            <Messages />
-          </>
-        ) : (
-          <p>Sign in to see the stuff.</p>
-        )}
+        {loading && <p>Loading user data...</p>}
+        <Messages />
       </main>
     </>
   );
@@ -86,57 +79,75 @@ function Messages() {
   const [user] = useAuthState(auth);
   const messagesCollection = firestore.collection("messages");
   const query = messagesCollection
-    .where("uid", "==", user.uid)
+    .where("uid", "==", user?.uid || null)
     .orderBy("createdAt", "desc");
   const [messages, loading, error] = useCollectionData(query, {
     idField: "id",
   });
+  console.log(messages);
 
   const [newMessage, setNewMessage] = useState("");
   async function createMessage(event) {
     event.preventDefault();
     console.log("newMessage", newMessage);
-    await messagesCollection.add({
-      uid: user.uid,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      text: newMessage,
-    });
-    setNewMessage("");
+    if (!user) {
+      console.warning("DATABASE WRITE FAILED, user not authenticated");
+    }
+    else {
+      await messagesCollection.add({
+        uid: user.uid,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        text: newMessage,
+      });
+      setNewMessage("");
+    }
   }
 
-  return (
-    <>
-      <h2>Messages from the database!</h2>
-      {error && (
-        <p>
-          <em>
-            <strong>useCollectionData Error:</strong> {JSON.stringify(error)}
-          </em>
-        </p>
-      )}
-      {loading && <p>Loading...</p>}
+  if (!user) {
+    return <p>Sign in to see the stuff.</p>
+  }
+  else {
+    return (
+      <>
+        <p>Welcome, {user.displayName}!</p>
+        <h2>Messages from the database!</h2>
+        {error && (
+          <p>
+            <em>
+              <strong>useCollectionData Error:</strong> {JSON.stringify(error)}
+            </em>
+          </p>
+        )}
+        {loading && <p>Loading messages...</p>}
 
-      <h3>Add a message</h3>
-      <p>
+        <h3>Add a message</h3>
         <Form onSubmit={createMessage}>
-          <InputGroup>
-            <Form.Control
-              value={newMessage}
-              onChange={({ target }) => setNewMessage(target.value)}
-            />
-            <InputGroup.Append>
-              <Button type="submit">Save</Button>
-            </InputGroup.Append>
-          </InputGroup>
+          <p>
+            <InputGroup>
+              <Form.Control
+                value={newMessage}
+                onChange={({ target }) => setNewMessage(target.value)}
+                required
+              />
+              <InputGroup.Append>
+                <Button type="submit">Save</Button>
+              </InputGroup.Append>
+            </InputGroup>
+          </p>
         </Form>
-      </p>
 
-      <h3>Messages</h3>
-      {messages ? (
-        messages.map((message) => <p key={message.id}>{message.text}</p>)
-      ) : (
-        <p>Aw nuts, there are none.</p>
-      )}
-    </>
-  );
+        <h3>Messages</h3>
+        {messages?.length ? (
+          messages.map((message) => (
+            <p key={message.id}>
+              {message.createdAt.seconds}: {message.text}
+            </p>
+          ))
+        ) : (
+          <p>Aw nuts, there are none.</p>
+        )}
+      </>
+    );
+  }
+  
 }
