@@ -1,17 +1,17 @@
-import {useState} from 'react'
-import './App.css'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/auth'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { useState } from "react";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { Button } from "react-bootstrap";
 
 // global utilities
 const isFirebaseInitialized = firebase.apps.length > 0;
 const isDevelopEnv = process.env.NODE_ENV === "development";
 
 // initialize firebase
-if ( ! isFirebaseInitialized ) {
+if (!isFirebaseInitialized) {
   firebase.initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -24,15 +24,14 @@ if ( ! isFirebaseInitialized ) {
 }
 
 // global firebase tools
-const auth = firebase.auth()
-const firestore = firebase.firestore()
+const auth = firebase.auth();
+const firestore = firebase.firestore();
 
 // use firebase emulators in develop
 if (!isFirebaseInitialized && isDevelopEnv) {
   auth.useEmulator("http://localhost:9099");
   firestore.useEmulator("localhost", 8080);
 }
-
 
 export default function App() {
   const [user, loading, error] = useAuthState(auth);
@@ -41,8 +40,8 @@ export default function App() {
     <>
       <header>
         <h1>Money</h1>
-        <div>{user?.email}</div>
-        <div>{user ? <SignOutButton /> : <SignInButton />}</div>
+        <p>{user?.email}</p>
+        <p>{user ? <SignOutButton /> : <SignInButton />}</p>
       </header>
       <main>
         {error && (
@@ -68,43 +67,40 @@ export default function App() {
 
 function SignInButton() {
   function signInWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider()
-    auth.signInWithPopup(provider)
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
   }
-  return (
-    <button onClick={signInWithGoogle}>Sign in with Google</button>
-  )
+  return <Button onClick={signInWithGoogle}>Sign in with Google</Button>;
 }
 
 function SignOutButton() {
   return (
-    auth.currentUser && (
-      <button onClick={ () => auth.signOut() }>Sign out</button>
-    )
+    auth.currentUser && <Button onClick={() => auth.signOut()}>Sign out</Button>
   );
 }
 
 function Messages() {
-
   const [user] = useAuthState(auth);
-  const messagesCollection = firestore.collection('messages')
+  const messagesCollection = firestore.collection("messages");
   const query = messagesCollection
     .where("uid", "==", user.uid)
-    .orderBy("createdAt", "desc")
-  const [messages, loading, error] = useCollectionData(query, {idField: "id"})
+    .orderBy("createdAt", "desc");
+  const [messages, loading, error] = useCollectionData(query, {
+    idField: "id",
+  });
 
-  const [newMessage, setNewMessage] = useState('')
+  const [newMessage, setNewMessage] = useState("");
   async function createMessage(event) {
-    event.preventDefault()
-    console.log('newMessage', newMessage)
+    event.preventDefault();
+    console.log("newMessage", newMessage);
     await messagesCollection.add({
       uid: user.uid,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       text: newMessage,
-    })
-    setNewMessage('')
+    });
+    setNewMessage("");
   }
-  
+
   return (
     <>
       <h2>Messages from the database!</h2>

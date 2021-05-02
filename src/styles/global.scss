@@ -1,0 +1,10 @@
+@import 'start';
+
+body {
+  @include media-breakpoint-up(md) {
+    padding: 8vmin;
+  }
+}
+section {
+  padding: $spacer 0;
+}
