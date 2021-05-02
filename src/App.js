@@ -6,6 +6,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Button, Form, InputGroup } from "react-bootstrap";
 
+import StyleGuide from "./components/StyleGuide";
+
 // global utilities
 const isFirebaseInitialized = firebase.apps.length > 0;
 const isDevelopEnv = process.env.NODE_ENV === "development";
@@ -56,6 +58,7 @@ export default function App() {
         )}
         {loading && <p>Loading user data...</p>}
         <Messages />
+        <StyleGuide />
       </main>
     </>
   );
