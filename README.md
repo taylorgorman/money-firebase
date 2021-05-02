@@ -31,15 +31,17 @@
 - [Truebill](https://www.truebill.com)
 
 ## To Do
-- [x] Add functionality from fire-calculator
 - [ ] Add functionality from master-pigglesworth
+- [ ] Rename to sir-pigglesworth
+- [ ] Migrate to Vercel for hosting and serverless functions
 - [ ] Change favicon
-- [x] Get functions working in emulator - `yarn`
 - [ ] Write a function (or wait until I need one to do this)
 - [ ] How do I want/need to use the hosting emulator?
 - [ ] Write firestore rules such that users can only see their own data
 - [ ] Start throwing up some functionality! No real styles yet, just make it work.
 - [ ] Write function to populate database on start
+- [x] Add functionality from fire-calculator
+- [x] Get functions working in emulator - `yarn`
 
 ## Resources
 1. _Super_ helpful video on using Firebase in React: https://www.youtube.com/watch?v=zQyrwxMPm88
