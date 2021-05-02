@@ -2,20 +2,6 @@
 export default function Home() {
   const data = [
     {
-      'Name': <a href="https://www.monarchmoney.com">Monarch</a>,
-      'Budgets': 'Yes?',
-      'Recurring costs': '',
-      'Bills': '',
-      'Cost/mo.': '$9.99',
-    },
-    {
-      'Name': <a href="https://www.truebill.com">Truebill</a>,
-      'Budgets': 'Yes?',
-      'Recurring costs': '',
-      'Bills': '',
-      'Cost/mo.': 'Free?',
-    },
-    {
       'Name': <><a href="https://mint.intuit.com">Mint</a><br/>F these guys..</>,
       'Budgets': 'Yes?',
       'Recurring costs': '',
@@ -42,6 +28,20 @@ export default function Home() {
       'Recurring costs': '',
       'Bills': '',
       'Cost/mo.': 'Free, $9.95, $19.95',
+    },
+    {
+      'Name': <a href="https://www.monarchmoney.com">Monarch</a>,
+      'Budgets': 'Yes?',
+      'Recurring costs': '',
+      'Bills': '',
+      'Cost/mo.': '$9.99',
+    },
+    {
+      'Name': <a href="https://www.truebill.com">Truebill</a>,
+      'Budgets': 'Yes?',
+      'Recurring costs': '',
+      'Bills': '',
+      'Cost/mo.': 'Free?',
     },
   ]
   return (<>

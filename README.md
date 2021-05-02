@@ -3,7 +3,12 @@
 > A personal finance app and also me trying to figure out React + Firebase
 
 ## Competitors
-- https://www.monarchmoney.com
+- [Mint](https://mint.intuit.com)
+- [YNAB](https://www.youneedabudget.com)
+- [Every Dollar](https://www.ramseysolutions.com/ramseyplus/everydollar)
+- [Pocketsmith](https://www.pocketsmith.com)
+- [Monarch](https://www.monarchmoney.com)
+- [Truebill](https://www.truebill.com)
 
 ## To Do
 1. Change favicon
