@@ -31,7 +31,7 @@
 - [Truebill](https://www.truebill.com)
 
 ## To Do
-- [ ] Add functionality from fire-calculator
+- [x] Add functionality from fire-calculator
 - [ ] Add functionality from master-pigglesworth
 - [ ] Change favicon
 - [x] Get functions working in emulator - `yarn`
