@@ -1,17 +1,20 @@
-import {useState} from 'react'
-import './App.css'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/auth'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { useState } from "react";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { Button, Form, InputGroup } from "react-bootstrap";
+
+import StyleGuide from "./components/StyleGuide";
+import RetirementCalculator from "./components/RetirementCalculator";
 
 // global utilities
 const isFirebaseInitialized = firebase.apps.length > 0;
 const isDevelopEnv = process.env.NODE_ENV === "development";
 
 // initialize firebase
-if ( ! isFirebaseInitialized ) {
+if (!isFirebaseInitialized) {
   firebase.initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -24,8 +27,8 @@ if ( ! isFirebaseInitialized ) {
 }
 
 // global firebase tools
-const auth = firebase.auth()
-const firestore = firebase.firestore()
+const auth = firebase.auth();
+const firestore = firebase.firestore();
 
 // use firebase emulators in develop
 if (!isFirebaseInitialized && isDevelopEnv) {
@@ -33,16 +36,18 @@ if (!isFirebaseInitialized && isDevelopEnv) {
   firestore.useEmulator("localhost", 8080);
 }
 
-
 export default function App() {
   const [user, loading, error] = useAuthState(auth);
 
   return (
     <>
       <header>
-        <h1>Money</h1>
-        <div>{user?.email}</div>
-        <div>{user ? <SignOutButton /> : <SignInButton />}</div>
+        <div>
+          <h1>Money</h1>
+          <span className="d-sm-none">{user?.email}</span>
+        </div>
+        <span className="m-0 d-none d-sm-flex">{user?.email}</span>
+        {user ? <SignOutButton /> : <SignInButton />}
       </header>
       <main>
         {error && (
@@ -52,15 +57,10 @@ export default function App() {
             </em>
           </p>
         )}
-        {loading && <p>Loading...</p>}
-        {user ? (
-          <>
-            <p>Welcome!</p>
-            <Messages />
-          </>
-        ) : (
-          <p>Sign in to see the stuff.</p>
-        )}
+        {loading && <p>Loading user data...</p>}
+        <Messages />
+        <RetirementCalculator />
+        <StyleGuide />
       </main>
     </>
   );
@@ -68,70 +68,87 @@ export default function App() {
 
 function SignInButton() {
   function signInWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider()
-    auth.signInWithPopup(provider)
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
   }
-  return (
-    <button onClick={signInWithGoogle}>Sign in with Google</button>
-  )
+  return <Button onClick={signInWithGoogle}>Sign in with Google</Button>;
 }
 
 function SignOutButton() {
   return (
-    auth.currentUser && (
-      <button onClick={ () => auth.signOut() }>Sign out</button>
-    )
+    auth.currentUser && <Button onClick={() => auth.signOut()}>Sign out</Button>
   );
 }
 
 function Messages() {
-
   const [user] = useAuthState(auth);
-  const messagesCollection = firestore.collection('messages')
+  const messagesCollection = firestore.collection("messages");
   const query = messagesCollection
-    .where("uid", "==", user.uid)
-    .orderBy("createdAt", "desc")
-  const [messages, loading, error] = useCollectionData(query, {idField: "id"})
+    .where("uid", "==", user?.uid || null)
+    .orderBy("createdAt", "desc");
+  const [messages, loading, error] = useCollectionData(query, {
+    idField: "id",
+  });
 
-  const [newMessage, setNewMessage] = useState('')
+  const [newMessage, setNewMessage] = useState("");
   async function createMessage(event) {
-    event.preventDefault()
-    console.log('newMessage', newMessage)
-    await messagesCollection.add({
-      uid: user.uid,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      text: newMessage,
-    })
-    setNewMessage('')
+    event.preventDefault();
+    if (!user) {
+      console.warning("DATABASE WRITE FAILED, user not authenticated");
+    }
+    else {
+      await messagesCollection.add({
+        uid: user.uid,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        text: newMessage,
+      });
+      setNewMessage("");
+    }
+  }
+
+  if (!user) {
+    return <p>Sign in to see the stuff.</p>
+  }
+  else {
+    return (
+      <>
+        <p>Welcome, {user.displayName}!</p>
+        <h2>Messages from the database!</h2>
+        {error && (
+          <p>
+            <em>
+              <strong>useCollectionData Error:</strong> {JSON.stringify(error)}
+            </em>
+          </p>
+        )}
+        {loading && <p>Loading messages...</p>}
+
+        <h3>Add a message</h3>
+        <Form onSubmit={createMessage}>
+            <InputGroup>
+              <Form.Control
+                value={newMessage}
+                onChange={({ target }) => setNewMessage(target.value)}
+                required
+              />
+              <InputGroup.Append>
+                <Button type="submit">Save</Button>
+              </InputGroup.Append>
+            </InputGroup>
+        </Form>
+
+        <h3>Messages</h3>
+        {messages?.length ? (
+          messages.map((message) => (
+            <p key={message.id}>
+              {message.createdAt.seconds}: {message.text}
+            </p>
+          ))
+        ) : (
+          <p>Aw nuts, there are none.</p>
+        )}
+      </>
+    );
   }
   
-  return (
-    <>
-      <h2>Messages from the database!</h2>
-      {error && (
-        <p>
-          <em>
-            <strong>useCollectionData Error:</strong> {JSON.stringify(error)}
-          </em>
-        </p>
-      )}
-      {loading && <p>Loading...</p>}
-
-      <h3>Add a message</h3>
-      <form onSubmit={createMessage}>
-        <input
-          value={newMessage}
-          onChange={({ target }) => setNewMessage(target.value)}
-        />
-        <button type="submit">Save</button>
-      </form>
-
-      <h3>Messages</h3>
-      {messages ? (
-        messages.map((message) => <p key={message.id}>{message.text}</p>)
-      ) : (
-        <p>Aw nuts, there are none.</p>
-      )}
-    </>
-  );
 }

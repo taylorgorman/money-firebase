@@ -1,0 +1,83 @@
+
+// Color
+//
+$gray-hue: 237;
+$gray-saturation: 8;
+$gray-100: hsl($gray-hue, $gray-saturation, 95);
+$gray-200: hsl($gray-hue, $gray-saturation, 89);
+$gray-300: hsl($gray-hue, $gray-saturation, 78);
+$gray-400: hsl($gray-hue, $gray-saturation, 69);
+$gray-500: hsl($gray-hue, $gray-saturation, 60);
+$gray-600: hsl($gray-hue, $gray-saturation, 51);
+$gray-700: hsl($gray-hue, $gray-saturation, 43);
+$gray-800: hsl($gray-hue, $gray-saturation, 33);
+$gray-900: hsl($gray-hue, $gray-saturation, 24);
+$black: hsl($gray-hue, $gray-saturation, 15);
+
+$forest: hsl(180, 90, 20);
+$yellow: hsl(45, 78, 73);
+$green: hsl(132, 40, 54);
+$coral: #D96055;
+$blue: hsl(190, 50, 53);
+$maroon-dark: hsl(316, 54, 16);
+
+$primary: $forest;
+$secondary: #99F9FF;
+$info: $blue;
+$success: $green;
+$warning: $yellow;
+$danger: $coral;
+$light: $gray-100;
+$dark: $maroon-dark;
+
+$link-color: $green;
+
+// Body
+//
+$body-bg: $gray-100;
+$body-color: $gray-700;
+
+// Spacing
+//
+$spacer: 2rem;
+
+// Components
+//
+$border-radius: .17em;
+
+$component-active-bg: $primary;
+
+// Typography
+//
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+$font-family-sans-serif: 'Raleway';
+$font-family-serif: 'Alegreya';
+$font-size-base: 18;
+$font-family-base: $font-family-serif;
+$font-family-ui: $font-family-sans-serif;
+
+$headings-font-family: 'Abril Fatface';
+$headings-color: $dark;
+$headings-margin-bottom: $spacer;
+$paragraph-margin-bottom: 1.75em;
+
+// Buttons + Forms
+//
+$input-btn-font-family: $font-family-ui;
+$input-btn-font-size: .85em;
+$input-btn-padding-y: .85em;
+$input-btn-padding-x: 1.5em;
+
+$input-btn-focus-width: .2rem;
+$input-btn-focus-color: rgba($component-active-bg, .1);
+$input-btn-focus-box-shadow:  0 1px .5em $input-btn-focus-width $input-btn-focus-color;
+
+$form-group-margin-bottom: $paragraph-margin-bottom * .75;
+
+// Forms
+//
+$input-padding-x: $input-btn-padding-y * 1.25;
+$custom-select-indicator-padding: 1em;
