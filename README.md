@@ -37,4 +37,4 @@
 - [ ] Write function to populate database on start
 
 ## Resources
-1. https://www.youtube.com/watch?v=zQyrwxMPm88
+1. _Super_ helpful video on using Firebase in React: https://www.youtube.com/watch?v=zQyrwxMPm88
