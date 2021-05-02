@@ -1,0 +1,24 @@
+@import '../../styles/start';
+
+.input-group.accounting {
+  $accounting-fz: 1.5em;
+
+  .input-group-prepend ~ .form-control {
+    border-left: 0;
+  }
+  .input-group-append ~ .form-control {
+    border-right: 0;
+  }
+  .input-group-text,
+  .form-control {
+    background: $input-bg;
+    font-family: $input-btn-font-family;
+    font-size: $accounting-fz;
+    color: darken($forest, 5);
+    padding: ($input-padding-y / 1em * 1rem) ($input-padding-x / 1em * 1rem);
+    height: $accounting-fz * 1.4;
+  }
+  .form-control {
+    text-align: right;
+  }
+}

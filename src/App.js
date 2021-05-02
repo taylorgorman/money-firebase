@@ -7,6 +7,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Button, Form, InputGroup } from "react-bootstrap";
 
 import StyleGuide from "./components/StyleGuide";
+import RetirementCalculator from "./components/RetirementCalculator";
 
 // global utilities
 const isFirebaseInitialized = firebase.apps.length > 0;
@@ -58,6 +59,7 @@ export default function App() {
         )}
         {loading && <p>Loading user data...</p>}
         <Messages />
+        <RetirementCalculator />
         <StyleGuide />
       </main>
     </>
@@ -87,12 +89,10 @@ function Messages() {
   const [messages, loading, error] = useCollectionData(query, {
     idField: "id",
   });
-  console.log(messages);
 
   const [newMessage, setNewMessage] = useState("");
   async function createMessage(event) {
     event.preventDefault();
-    console.log("newMessage", newMessage);
     if (!user) {
       console.warning("DATABASE WRITE FAILED, user not authenticated");
     }
@@ -125,7 +125,6 @@ function Messages() {
 
         <h3>Add a message</h3>
         <Form onSubmit={createMessage}>
-          <p>
             <InputGroup>
               <Form.Control
                 value={newMessage}
@@ -136,7 +135,6 @@ function Messages() {
                 <Button type="submit">Save</Button>
               </InputGroup.Append>
             </InputGroup>
-          </p>
         </Form>
 
         <h3>Messages</h3>
