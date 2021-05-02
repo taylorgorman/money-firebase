@@ -23,7 +23,12 @@
 1. `firebase emulators:start`
 
 ## Competitors
-- https://www.monarchmoney.com
+- [Mint](https://mint.intuit.com)
+- [YNAB](https://www.youneedabudget.com)
+- [Every Dollar](https://www.ramseysolutions.com/ramseyplus/everydollar)
+- [Pocketsmith](https://www.pocketsmith.com)
+- [Monarch](https://www.monarchmoney.com)
+- [Truebill](https://www.truebill.com)
 
 ## To Do
 - [ ] Add functionality from fire-calculator
