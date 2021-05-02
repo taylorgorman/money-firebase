@@ -26,6 +26,8 @@
 - https://www.monarchmoney.com
 
 ## To Do
+- [ ] Add functionality from fire-calculator
+- [ ] Add functionality from master-pigglesworth
 - [ ] Change favicon
 - [x] Get functions working in emulator - `yarn`
 - [ ] Write a function (or wait until I need one to do this)
