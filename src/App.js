@@ -4,7 +4,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { Button } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
 
 // global utilities
 const isFirebaseInitialized = firebase.apps.length > 0;
@@ -39,9 +39,12 @@ export default function App() {
   return (
     <>
       <header>
-        <h1>Money</h1>
-        <p>{user?.email}</p>
-        <p>{user ? <SignOutButton /> : <SignInButton />}</p>
+        <div>
+          <h1>Money</h1>
+          <span className="d-sm-none">{user?.email}</span>
+        </div>
+        <span className="m-0 d-none d-sm-flex">{user?.email}</span>
+        {user ? <SignOutButton /> : <SignInButton />}
       </header>
       <main>
         {error && (
@@ -114,13 +117,19 @@ function Messages() {
       {loading && <p>Loading...</p>}
 
       <h3>Add a message</h3>
-      <form onSubmit={createMessage}>
-        <input
-          value={newMessage}
-          onChange={({ target }) => setNewMessage(target.value)}
-        />
-        <button type="submit">Save</button>
-      </form>
+      <p>
+        <Form onSubmit={createMessage}>
+          <InputGroup>
+            <Form.Control
+              value={newMessage}
+              onChange={({ target }) => setNewMessage(target.value)}
+            />
+            <InputGroup.Append>
+              <Button type="submit">Save</Button>
+            </InputGroup.Append>
+          </InputGroup>
+        </Form>
+      </p>
 
       <h3>Messages</h3>
       {messages ? (
