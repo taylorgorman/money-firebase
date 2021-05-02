@@ -6,7 +6,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Button, Form, InputGroup } from "react-bootstrap";
 
-import StyleGuide from "./components/StyleGuide";
+import Home from "./pages/Home";
+import StyleGuide from "./pages/StyleGuide";
 import RetirementCalculator from "./components/RetirementCalculator";
 
 // global utilities
@@ -58,6 +59,7 @@ export default function App() {
           </p>
         )}
         {loading && <p>Loading user data...</p>}
+        <Home />
         <Messages />
         <RetirementCalculator />
         <StyleGuide />
@@ -107,7 +109,7 @@ function Messages() {
   }
 
   if (!user) {
-    return <p>Sign in to see the stuff.</p>
+    return <p>Sign in to see your messages.</p>;
   }
   else {
     return (

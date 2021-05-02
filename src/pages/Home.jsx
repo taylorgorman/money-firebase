@@ -1,60 +1,75 @@
+import { Table } from 'react-bootstrap'
 
+const CompetitorName = ({ name, url, description }) => (
+  <>
+    <h2 className="h5"><a href={url}>{name}</a></h2>
+    {description && (
+      <p className="m-0"><i>{description}</i></p>
+    )}
+  </>
+)
 export default function Home() {
   const data = [
     {
-      'Name': <><a href="https://mint.intuit.com">Mint</a><br/>F these guys..</>,
+      'Name': <CompetitorName name="Mint" url="https://mint.intuit.com" description="F these guys.." />,
       'Budgets': 'Yes?',
       'Recurring costs': '',
       'Bills': '',
       'Cost/mo.': 'Free?',
     },
     {
-      'Name': <a href="https://www.youneedabudget.com">YNAB</a>,
+      'Name': <CompetitorName name="YNAB" url="https://www.youneedabudget.com" />,
       'Budgets': '',
       'Recurring costs': '',
       'Bills': '',
       'Cost/mo.': '$11.99',
     },
     {
-      'Name': <a href="https://www.ramseysolutions.com/ramseyplus/everydollar">Every Dollar</a>,
+      'Name': <CompetitorName name="Every Dollar" url="https://www.ramseysolutions.com/ramseyplus/everydollar" />,
       'Budgets': '',
       'Recurring costs': '',
       'Bills': '',
       'Cost/mo.': 'Free?',
     },
     {
-      'Name': <a href="https://www.pocketsmith.com">Pocketsmith</a>,
+      'Name': <CompetitorName name="Pocketsmith" url="https://www.pocketsmith.com" />,
       'Budgets': '',
       'Recurring costs': '',
       'Bills': '',
       'Cost/mo.': 'Free, $9.95, $19.95',
     },
     {
-      'Name': <a href="https://www.monarchmoney.com">Monarch</a>,
+      'Name': <CompetitorName name="Monarch" url="https://www.monarchmoney.com" />,
       'Budgets': 'Yes?',
       'Recurring costs': '',
       'Bills': '',
       'Cost/mo.': '$9.99',
     },
     {
-      'Name': <a href="https://www.truebill.com">Truebill</a>,
+      'Name': <CompetitorName name="Truebill" url="https://www.truebill.com" />,
       'Budgets': 'Yes?',
       'Recurring costs': '',
       'Bills': '',
       'Cost/mo.': 'Free?',
     },
   ]
-  return (<>
+  return (
+    <section>
     <h1>Competitors</h1>
-    <table>
+    <Table>
+      <thead>
       <tr>
         {Object.keys(data[0]).map(title => <th>{title}</th>)}
-      </tr>
+        </tr>
+      </thead>
+      <tbody>
       {data.map(platform => (
           <tr>
           {Object.values(platform).map(content => <td>{content}</td>)}
           </tr>
-        ))}
-    </table>
-  </>)
+      ))}
+      </tbody>
+    </Table>
+  </section>
+  )
 }
