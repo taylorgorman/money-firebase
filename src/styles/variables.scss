@@ -30,8 +30,6 @@ $danger: $coral;
 $light: $gray-100;
 $dark: $maroon-dark;
 
-$link-color: $green;
-
 // Body
 //
 $body-bg: $gray-100;
@@ -46,6 +44,12 @@ $spacer: 2rem;
 $border-radius: .17em;
 
 $component-active-bg: $primary;
+
+// Links
+//
+$link-color: $forest;
+$link-hover-color: $link-color;
+$link-hover-decoration: none;
 
 // Typography
 //
