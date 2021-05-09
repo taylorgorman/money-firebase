@@ -37,6 +37,11 @@ if (!isFirebaseInitialized && isDevelopEnv) {
   firestore.useEmulator("localhost", 8080);
 }
 
+/**
+ * Renders the whole app right now. This'll get split into more sub-components later.
+ *
+ * @component
+ */
 export default function App() {
   const [user, loading, error] = useAuthState(auth);
 

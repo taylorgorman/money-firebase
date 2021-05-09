@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: App.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: App.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState } from "react";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { Button, Form, InputGroup } from "react-bootstrap";
+
+import Home from "./pages/Home";
+import StyleGuide from "./pages/StyleGuide";
+import RetirementCalculator from "./components/RetirementCalculator";
+
+// global utilities
+const isFirebaseInitialized = firebase.apps.length > 0;
+const isDevelopEnv = process.env.NODE_ENV === "development";
+
+// initialize firebase
+if (!isFirebaseInitialized) {
+  firebase.initializeApp({
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  });
+}
+
+// global firebase tools
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+
+// use firebase emulators in develop
+if (!isFirebaseInitialized &amp;&amp; isDevelopEnv) {
+  auth.useEmulator("http://localhost:9099");
+  firestore.useEmulator("localhost", 8080);
+}
+
+/**
+ * Renders the whole app right now. This'll get split into more sub-components later.
+ *
+ * @component
+ */
+export default function App() {
+  const [user, loading, error] = useAuthState(auth);
+
+  return (
+    &lt;>
+      &lt;header>
+        &lt;div>
+          &lt;h1>Money&lt;/h1>
+          &lt;span className="d-sm-none">{user?.email}&lt;/span>
+        &lt;/div>
+        &lt;span className="m-0 d-none d-sm-flex">{user?.email}&lt;/span>
+        {user ? &lt;SignOutButton /> : &lt;SignInButton />}
+      &lt;/header>
+      &lt;main>
+        {error &amp;&amp; (
+          &lt;p>
+            &lt;em>
+              &lt;strong>useAuthState Error:&lt;/strong> {JSON.stringify(error)}
+            &lt;/em>
+          &lt;/p>
+        )}
+        {loading &amp;&amp; &lt;p>Loading user data...&lt;/p>}
+        &lt;Home />
+        &lt;Messages />
+        &lt;RetirementCalculator />
+        &lt;StyleGuide />
+      &lt;/main>
+    &lt;/>
+  );
+}
+
+function SignInButton() {
+  function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  }
+  return &lt;Button onClick={signInWithGoogle}>Sign in with Google&lt;/Button>;
+}
+
+function SignOutButton() {
+  return (
+    auth.currentUser &amp;&amp; &lt;Button onClick={() => auth.signOut()}>Sign out&lt;/Button>
+  );
+}
+
+function Messages() {
+  const [user] = useAuthState(auth);
+  const messagesCollection = firestore.collection("messages");
+  const query = messagesCollection
+    .where("uid", "==", user?.uid || null)
+    .orderBy("createdAt", "desc");
+  const [messages, loading, error] = useCollectionData(query, {
+    idField: "id",
+  });
+
+  const [newMessage, setNewMessage] = useState("");
+  async function createMessage(event) {
+    event.preventDefault();
+    if (!user) {
+      console.warning("DATABASE WRITE FAILED, user not authenticated");
+    }
+    else {
+      await messagesCollection.add({
+        uid: user.uid,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        text: newMessage,
+      });
+      setNewMessage("");
+    }
+  }
+
+  if (!user) {
+    return &lt;p>Sign in to see your messages.&lt;/p>;
+  }
+  else {
+    return (
+      &lt;>
+        &lt;p>Welcome, {user.displayName}!&lt;/p>
+        &lt;h2>Messages from the database!&lt;/h2>
+        {error &amp;&amp; (
+          &lt;p>
+            &lt;em>
+              &lt;strong>useCollectionData Error:&lt;/strong> {JSON.stringify(error)}
+            &lt;/em>
+          &lt;/p>
+        )}
+        {loading &amp;&amp; &lt;p>Loading messages...&lt;/p>}
+
+        &lt;h3>Add a message&lt;/h3>
+        &lt;Form onSubmit={createMessage}>
+            &lt;InputGroup>
+              &lt;Form.Control
+                value={newMessage}
+                onChange={({ target }) => setNewMessage(target.value)}
+                required
+              />
+              &lt;InputGroup.Append>
+                &lt;Button type="submit">Save&lt;/Button>
+              &lt;/InputGroup.Append>
+            &lt;/InputGroup>
+        &lt;/Form>
+
+        &lt;h3>Messages&lt;/h3>
+        {messages?.length ? (
+          messages.map((message) => (
+            &lt;p key={message.id}>
+              {message.createdAt.seconds}: {message.text}
+            &lt;/p>
+          ))
+        ) : (
+          &lt;p>Aw nuts, there are none.&lt;/p>
+        )}
+      &lt;/>
+    );
+  }
+  
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sun May 02 2021 14:36:53 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
