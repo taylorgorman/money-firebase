@@ -59,13 +59,13 @@ export default function Home() {
     <Table>
       <thead>
       <tr>
-        {Object.keys(data[0]).map(title => <th>{title}</th>)}
+        {Object.keys(data[0]).map((title, key) => <th key={key}>{title}</th>)}
         </tr>
       </thead>
       <tbody>
-      {data.map(platform => (
-          <tr>
-          {Object.values(platform).map(content => <td>{content}</td>)}
+      {data.map((platform, key) => (
+          <tr key={key}>
+          {Object.values(platform).map((content, key) => <td key={key}>{content}</td>)}
           </tr>
       ))}
       </tbody>

@@ -38,27 +38,11 @@ if (!isFirebaseInitialized && isDevelopEnv) {
 }
 
 export default function App() {
-  const [user, loading, error] = useAuthState(auth);
 
   return (
     <>
-      <header>
-        <div>
-          <h1>Money</h1>
-          <span className="d-sm-none">{user?.email}</span>
-        </div>
-        <span className="m-0 d-none d-sm-flex">{user?.email}</span>
-        {user ? <SignOutButton /> : <SignInButton />}
-      </header>
+      <Header />
       <main>
-        {error && (
-          <p>
-            <em>
-              <strong>useAuthState Error:</strong> {JSON.stringify(error)}
-            </em>
-          </p>
-        )}
-        {loading && <p>Loading user data...</p>}
         <Home />
         <Messages />
         <RetirementCalculator />
@@ -66,6 +50,21 @@ export default function App() {
       </main>
     </>
   );
+}
+
+function Header() {
+  const [user, loading, error] = useAuthState(auth)
+  error && console.error("Error with user:", error)
+  return (
+    <header>
+      <div>
+        <h1>Money</h1>
+        <span className="d-sm-none">{user?.email}</span>
+      </div>
+      <span className="m-0 d-none d-sm-flex">{user?.email}</span>
+      {user ? <SignOutButton /> : <SignInButton />}
+    </header>
+  )
 }
 
 function SignInButton() {
@@ -113,9 +112,8 @@ function Messages() {
   }
   else {
     return (
-      <>
-        <p>Welcome, {user.displayName}!</p>
-        <h2>Messages from the database!</h2>
+      <section>
+        <h1>Messages</h1>
         {error && (
           <p>
             <em>
@@ -139,17 +137,17 @@ function Messages() {
             </InputGroup>
         </Form>
 
-        <h3>Messages</h3>
+        <h3>List of your messages</h3>
         {messages?.length ? (
           messages.map((message) => (
             <p key={message.id}>
-              {message.createdAt.seconds}: {message.text}
+              <strong>{message.createdAt?.seconds}:</strong> {message.text}
             </p>
           ))
         ) : (
           <p>Aw nuts, there are none.</p>
         )}
-      </>
+      </section>
     );
   }
   
