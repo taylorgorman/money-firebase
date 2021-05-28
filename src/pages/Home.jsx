@@ -56,7 +56,7 @@ export default function Home() {
   return (
     <section>
     <h1>Competitors</h1>
-    <Table>
+    <Table responsive>
       <thead>
       <tr>
         {Object.keys(data[0]).map((title, key) => <th key={key}>{title}</th>)}
