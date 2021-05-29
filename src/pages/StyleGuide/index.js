@@ -1,12 +1,14 @@
-import React from "react";
-import { Table, Button, Form, Col } from "react-bootstrap";
+import React from 'react'
+import { Table, Button, Form, Col } from 'react-bootstrap'
+import Layout from '../../components/Layout'
+import Section from '../../components/Section'
 
 import "./index.scss";
 
 export default function StyleGuide() {
   return (
-    <>
-      <section className="colors">
+    <Layout>
+      <Section className="colors">
         <h1>Colors</h1>
 
         <p className="color-blocks">
@@ -37,9 +39,9 @@ export default function StyleGuide() {
             </span>
           ))}
         </p>
-      </section>
+      </Section>
 
-      <section className="typography">
+      <Section className="typography">
         <h1>Typography</h1>
 
         <p>
@@ -96,9 +98,9 @@ export default function StyleGuide() {
             </tr>
           </tbody>
         </Table>
-      </section>
+      </Section>
 
-      <section className="buttons">
+      <Section className="buttons">
         <h1>Buttons</h1>
         <p>
           <Button variant="primary">Primary</Button>
@@ -111,9 +113,9 @@ export default function StyleGuide() {
           <Button variant="dark">Dark</Button>
           <Button variant="link">Link</Button>
         </p>
-      </section>
+      </Section>
 
-      <section className="forms">
+      <Section className="forms">
         <h1>Forms</h1>
         <Form>
           <Form.Row>
@@ -168,7 +170,7 @@ export default function StyleGuide() {
             </Button>
           </p>
         </Form>
-      </section>
-    </>
-  );
+      </Section>
+    </Layout>
+  )
 }

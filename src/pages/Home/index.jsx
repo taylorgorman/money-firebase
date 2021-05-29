@@ -1,4 +1,6 @@
 import { Table } from 'react-bootstrap'
+import Layout from '../../components/Layout'
+import Section from '../../components/Section'
 
 const CompetitorName = ({ name, url, description }) => (
   <>
@@ -54,22 +56,24 @@ export default function Home() {
     },
   ]
   return (
-    <section>
-    <h1>Competitors</h1>
-    <Table responsive>
-      <thead>
-      <tr>
-        {Object.keys(data[0]).map((title, key) => <th key={key}>{title}</th>)}
-        </tr>
-      </thead>
-      <tbody>
-      {data.map((platform, key) => (
-          <tr key={key}>
-          {Object.values(platform).map((content, key) => <td key={key}>{content}</td>)}
-          </tr>
-      ))}
-      </tbody>
-    </Table>
-  </section>
+    <Layout>
+      <Section>
+        <h1>Competitors</h1>
+        <Table responsive>
+          <thead>
+          <tr>
+            {Object.keys(data[0]).map((title, key) => <th key={key}>{title}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+          {data.map((platform, key) => (
+              <tr key={key}>
+              {Object.values(platform).map((content, key) => <td key={key}>{content}</td>)}
+              </tr>
+          ))}
+          </tbody>
+        </Table>
+      </Section>
+    </Layout>
   )
 }

@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom'
 import reportWebVitals from './reportWebVitals'
 
 import './index.scss'
-import App from './App'
 import { FirebaseProvider } from './utilities/FirebaseContext'
+import Routes from './Routes'
 
 const ReactApp = () => (
   <React.StrictMode>
     <FirebaseProvider>
-      <App />
+      <Routes />
     </FirebaseProvider>
   </React.StrictMode>
 )

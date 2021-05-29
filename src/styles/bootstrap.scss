@@ -1,3 +1,11 @@
+// Container
+//
+@include media-breakpoint-up(md) {
+  .container {
+    padding-left: $spacer * 1.5;
+    padding-right: $spacer * 1.5;
+  }
+}
 
 // Link
 //

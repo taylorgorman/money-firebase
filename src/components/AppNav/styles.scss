@@ -1,0 +1,105 @@
+@import '../../styles/start';
+
+$app-nav-height-sm: 3rem;
+$app-nav-width-md: 10rem;
+$app-nav-breakpoint: 800px;
+
+body {
+  @media ( max-width: $app-nav-breakpoint - 1 ) {
+    padding-bottom: 2em;
+  }
+  @media ( min-width: $app-nav-breakpoint ) {
+    padding-left: $app-nav-width-md;
+  }
+}
+.app-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: $body-bg;
+  font-family: $font-family-sans-serif;
+  font-weight: bold;
+  font-size: .75em;
+
+  a {
+    display: block;
+    width: 100%;
+    background: none;
+
+    span {
+      display: inline-block;
+      position: relative;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: $success;
+      }
+    }
+    &.active {
+      color: $success;
+    }
+  }
+  @media ( max-width: $app-nav-breakpoint - 1 ) {
+    width: 100%;
+    display: flex;
+    border-top: solid 1px $gray-200;
+    text-align: center;
+
+    a {
+      padding: 0 1em;
+
+      span {
+        height: $app-nav-height-sm;
+        line-height: 1;
+        padding: ($app-nav-height-sm - 1) / 2 0;
+
+        &::after {
+          width: 100%;
+          height: 0em;
+          transition: height 0.2s;
+        }
+      }
+      &.active {
+        span {
+          &::after {
+            height: .3em;
+          }
+        }
+      }
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: .9em;
+  }
+  @media ( min-width: $app-nav-breakpoint ) {
+    padding: 2em 0;
+    width: $app-nav-width-md;
+    height: 100%;
+    border-right: solid 1px $gray-200;
+
+    a {
+      padding: .5em 0;
+
+      span {
+        padding: 0 1em;
+
+        &::after {
+          height: 100%;
+          width: 0em;
+          transition: width 0.2s;
+        }
+      }
+      &.active {
+        span {
+          &::after {
+            width: .3em;
+          }
+        }
+      }
+    }
+  }
+}

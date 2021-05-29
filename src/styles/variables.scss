@@ -37,12 +37,15 @@ $body-color: $gray-700;
 
 // Spacing
 //
-$spacer: 2rem;
+$spacer: 3rem;
+
+// Grid
+//
+$grid-gutter-width: $spacer;
 
 // Components
 //
 $border-radius: .25em;
-
 $component-active-bg: $primary;
 
 // Links
@@ -55,7 +58,7 @@ $link-hover-decoration: none;
 //
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Alegreya:400,400i,700,700i&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap');
 
 $font-family-sans-serif: 'Raleway';
 $font-family-serif: 'Alegreya';
