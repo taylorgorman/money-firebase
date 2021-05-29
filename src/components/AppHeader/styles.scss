@@ -1,0 +1,118 @@
+@import '../../styles/start';
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $primary;
+  color: $gray-100;
+  font-family: $font-family-sans-serif;
+  font-weight: bold;
+  font-size: .75em;
+  display: flex;
+  justify-content: space-between;
+  line-height: 1;
+  text-align: center;
+
+  h1 {
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+  }
+  .app-header-nav {
+    display: flex;
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    text-align: center;
+    color: inherit;
+    border-radius: 100%;
+
+    &:hover,
+    &.active {
+      background-color: rgba($secondary, .2);
+    }
+    &.active {
+      svg {
+        fill: $white;
+      }
+    }
+  }
+  svg {
+    fill: $secondary;
+  }
+
+  @mixin icon( $icon-size, $link-margin ) {
+    .app-header-nav {
+      a {
+        width: $icon-size * 2.1;
+        height: $icon-size * 2.1;
+        margin: $link-margin;
+      }
+      svg {
+        width: $icon-size;
+        height: $icon-size;
+      }
+    }
+  }
+
+  @media ( max-width: $app-ui-breakpoint - 1 ) {
+    $icon-size: 1.1em;
+    $link-margin: .15em;
+
+    width: 100%;
+    height: $app-header-height-sm;
+    align-items: center;
+    padding-top: $app-header-height-sm * .25;
+    padding-left: $spacer / 2;
+    padding-right: $spacer / 2;
+    flex-direction: row;
+
+    @include icon(
+      $icon-size,
+      $link-margin
+    );
+    h1 {
+      font-size: 1.5em;
+    }
+    .app-header-nav {
+      margin-right: -$link-margin - $icon-size * .5;
+    }
+  }
+  @media ( min-width: $app-ui-breakpoint ) {
+    $icon-size: 1.4em;
+    $link-margin: .25em;
+
+    width: $app-header-width-md;
+    height: 100%;
+    padding: $spacer 0;
+    flex-direction: column;
+
+    @include icon(
+      $icon-size,
+      $link-margin
+    );
+    h1 {
+      transform: rotate(90deg) translate(-93%, 0);
+      transform-origin: 0 100%;
+      white-space: nowrap;
+      line-height: 1;
+      padding: ($app-header-width-md - 1) / 2 0;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: 1em;
+    }
+    .app-header-nav {
+      margin-bottom: -$link-margin * 2;
+      flex-direction: column;
+
+      a {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}

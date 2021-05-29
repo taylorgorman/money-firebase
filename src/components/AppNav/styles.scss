@@ -1,17 +1,5 @@
 @import '../../styles/start';
 
-$app-nav-height-sm: 3rem;
-$app-nav-width-md: 10rem;
-$app-nav-breakpoint: 800px;
-
-body {
-  @media ( max-width: $app-nav-breakpoint - 1 ) {
-    padding-bottom: 2em;
-  }
-  @media ( min-width: $app-nav-breakpoint ) {
-    padding-left: $app-nav-width-md;
-  }
-}
 .app-nav {
   position: fixed;
   bottom: 0;
@@ -21,13 +9,18 @@ body {
   font-weight: bold;
   font-size: .75em;
 
+  a,
+  span {
+    line-height: 1;
+  }
   a {
     display: block;
-    width: 100%;
     background: none;
+    flex-grow: 1;
 
-    span {
-      display: inline-block;
+    .inner {
+      display: flex;
+      align-items: center;
       position: relative;
 
       &::after {
@@ -40,10 +33,14 @@ body {
       }
     }
     &.active {
-      color: $success;
+      color: $success !important;
     }
   }
-  @media ( max-width: $app-nav-breakpoint - 1 ) {
+  hr {
+    margin: $spacer * .5 0;
+  }
+
+  @media ( max-width: $app-ui-breakpoint - 1 ) {
     width: 100%;
     display: flex;
     border-top: solid 1px $gray-200;
@@ -52,10 +49,19 @@ body {
     a {
       padding: 0 1em;
 
-      span {
+      svg {
+        width: 1.5em;
+        height: 1.5em;
+      }
+      &:first-child {
+        padding-left: $spacer / 2;
+      }
+      &:last-child {
+        padding-right: $spacer / 2;
+      }
+      .inner {
         height: $app-nav-height-sm;
-        line-height: 1;
-        padding: ($app-nav-height-sm - 1) / 2 0;
+        justify-content: center;
 
         &::after {
           width: 100%;
@@ -64,28 +70,48 @@ body {
         }
       }
       &.active {
-        span {
+        .inner {
           &::after {
             height: .3em;
           }
         }
       }
     }
+    hr {
+      display: none;
+    }
   }
-  @include media-breakpoint-up(lg) {
-    font-size: .9em;
+  @include media-breakpoint-up(md) {
+    font-size: .85em;
+
+    a {
+      svg {
+        width: 1em;
+        height: 1em;
+        margin-right: .6em;
+      }
+    }
   }
-  @media ( min-width: $app-nav-breakpoint ) {
-    padding: 2em 0;
+  @media ( min-width: $app-ui-breakpoint ) {
+    $link-padding-y: .8em;
+
+    padding: $spacer 0;
     width: $app-nav-width-md;
     height: 100%;
+    left: $app-header-width-md;
     border-right: solid 1px $gray-200;
 
     a {
-      padding: .5em 0;
+      width: calc( 100% - 1em );
 
-      span {
-        padding: 0 1em;
+      svg {
+        display: none;
+      }
+      &:first-child {
+        margin-top: -$link-padding-y;
+      }
+      .inner {
+        padding: $link-padding-y $spacer / 2;
 
         &::after {
           height: 100%;
@@ -93,8 +119,13 @@ body {
           transition: width 0.2s;
         }
       }
+      &:hover {
+        color: $dark;
+        background-color: mix( $gray-200, $gray-100 );
+        border-radius: 0 $border-radius $border-radius 0;
+      }
       &.active {
-        span {
+        .inner {
           &::after {
             width: .3em;
           }

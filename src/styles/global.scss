@@ -1,5 +1,14 @@
 @import 'start';
 
+body {
+  @media ( max-width: $app-ui-breakpoint - 1 ) {
+    padding-top: $app-header-height-sm;
+    padding-bottom: $app-nav-height-sm;
+  }
+  @media ( min-width: $app-ui-breakpoint ) {
+    padding-left: $app-header-width-md + $app-nav-width-md;
+  }
+}
 section {
   padding: $spacer 0;
 }

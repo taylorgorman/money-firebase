@@ -35,6 +35,13 @@ $dark: $maroon-dark;
 $body-bg: $gray-100;
 $body-color: $gray-700;
 
+// App UI
+$app-ui-breakpoint: 800px;
+$app-header-height-sm: 5rem;
+$app-header-width-md: 3.5rem;
+$app-nav-height-sm: 2.8rem;
+$app-nav-width-md: 10rem;
+
 // Spacing
 //
 $spacer: 3rem;
@@ -42,6 +49,7 @@ $spacer: 3rem;
 // Grid
 //
 $grid-gutter-width: $spacer;
+$container-padding-x: $spacer * 1.25;
 
 // Components
 //
