@@ -1,24 +1,28 @@
 @import '../../styles/start';
 
-.buttons .btn,
-.color {
-  margin: 0 .5em .5em 0;
+.page-style-guide {
+  .buttons .btn,
+  .color {
+    margin: 0 .5em .5em 0;
+  }
 }
 .color-blocks {
   columns: 10em;
-}
-.color {
-  display: block;
-  span {
-    display: inline-block;
-    vertical-align: middle;
+
+  .color {
+    display: block;
+    
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
-}
-.color-block {
-  width: $spacer;
-  height: $spacer;
-  margin-right: 1em;
-}
-.color-details {
-  line-height: 1;
+  .color-block {
+    width: $spacer;
+    height: $spacer;
+    margin-right: 1em;
+  }
+  .color-details {
+    line-height: 1;
+  }
 }

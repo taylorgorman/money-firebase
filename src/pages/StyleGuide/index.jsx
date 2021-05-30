@@ -7,9 +7,12 @@ import "./index.scss";
 
 export default function StyleGuide() {
   return (
-    <Layout>
-      <Section className="colors">
-        <h1>Colors</h1>
+    <Layout page="style-guide">
+      <Section>
+
+        <h1>Style Guide</h1>
+
+        <h2>Colors</h2>
 
         <p className="color-blocks">
           {[
@@ -39,10 +42,8 @@ export default function StyleGuide() {
             </span>
           ))}
         </p>
-      </Section>
 
-      <Section className="typography">
-        <h1>Typography</h1>
+        <h2>Typography</h2>
 
         <p>
           Lorem ipsum dolor sit amet, <em>consectetur adipiscing</em> elit.
@@ -98,25 +99,25 @@ export default function StyleGuide() {
             </tr>
           </tbody>
         </Table>
-      </Section>
 
-      <Section className="buttons">
-        <h1>Buttons</h1>
-        <p>
-          <Button variant="primary">Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="success">Success</Button>
-          <Button variant="warning">Warning</Button>
-          <Button variant="danger">Danger</Button>
-          <Button variant="info">Info</Button>
-          <Button variant="light">Light</Button>
-          <Button variant="dark">Dark</Button>
-          <Button variant="link">Link</Button>
+        <h2>Buttons</h2>
+        <p className="buttons">
+          {[
+            'Primary',
+            'Secondary',
+            'Success',
+            'Warning',
+            'Danger',
+            'Info',
+            'Light',
+            'Dark',
+            'Link'
+          ].map(( variant ) => (
+            <Button variant={ variant.toLowerCase() }>{ variant }</Button>
+          ))}
         </p>
-      </Section>
 
-      <Section className="forms">
-        <h1>Forms</h1>
+        <h2>Forms</h2>
         <Form>
           <Form.Row>
             <Form.Group as={Col} controlId="formGridEmail">
@@ -170,6 +171,7 @@ export default function StyleGuide() {
             </Button>
           </p>
         </Form>
+
       </Section>
     </Layout>
   )

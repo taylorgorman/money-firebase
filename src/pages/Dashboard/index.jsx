@@ -2,14 +2,6 @@ import { Table } from 'react-bootstrap'
 import Layout from '../../components/Layout'
 import Section from '../../components/Section'
 
-const CompetitorName = ({ name, url, description }) => (
-  <>
-    <h2 className="h5"><a href={url}>{name}</a></h2>
-    {description && (
-      <p className="m-0"><i>{description}</i></p>
-    )}
-  </>
-)
 export default function Home() {
   const data = [
     {
@@ -58,7 +50,7 @@ export default function Home() {
   return (
     <Layout>
       <Section>
-        <h1>Competitors</h1>
+        <h1>Dashboard</h1>
         <Table responsive>
           <thead>
           <tr>
@@ -77,3 +69,12 @@ export default function Home() {
     </Layout>
   )
 }
+
+const CompetitorName = ({ name, url, description }) => (
+  <>
+    <h2 className="h5"><a href={url}>{name}</a></h2>
+    {description && (
+      <p className="m-0"><i>{description}</i></p>
+    )}
+  </>
+)
