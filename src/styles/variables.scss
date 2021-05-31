@@ -41,6 +41,10 @@ $theme-colors: (
   "twitter": $twitter,
 );
 
+// Options
+//
+$enable-shadows: true;
+
 // Body
 //
 $body-bg: $gray-100;
@@ -66,6 +70,9 @@ $container-padding-x: $spacer * 1.25;
 //
 $border-radius: .25em;
 $component-active-bg: $primary;
+$box-shadow-sm: 0 .1em .5rem rgba($gray-800, .2);
+$box-shadow: 0 .2em 1rem rgba($gray-800, .2);
+$box-shadow-lg: 0 .3em 2rem rgba($gray-800, .2);
 
 // Links
 //
@@ -124,5 +131,7 @@ $list-group-item-padding-x: 1em;
 
 // Popovers
 //
-$popover-body-padding-y: .5em;
-$popover-body-padding-x: .5em;
+$popover-body-padding-y: 1em;
+$popover-body-padding-x: 1em;
+$popover-border-width: 0;
+$popover-box-shadow: $box-shadow;

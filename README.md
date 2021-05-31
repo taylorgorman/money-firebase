@@ -18,9 +18,9 @@
 1. `cd functions`
 1. `yarn`
 1. `cd ..`
-1. `yarn start`
-1. Open new terminal
 1. `firebase emulators:start`
+1. Open new terminal
+1. `yarn start`
 
 ## Competitors
 - [Mint](https://mint.intuit.com)
@@ -31,12 +31,12 @@
 - [Truebill](https://www.truebill.com)
 
 ## To Do
+- [ ] Dark mode
+- [ ] After signin, redirect to original landing page
 - [ ] Add functionality from master-pigglesworth
-- [ ] Rename to sir-pigglesworth
+- [ ] Rename from money-firebase to sir-pigglesworth
 - [ ] Migrate to Vercel for hosting and serverless functions
 - [ ] Change favicon
-- [ ] Write a function (or wait until I need one to do this)
-- [ ] How do I want/need to use the hosting emulator?
 - [ ] Write firestore rules such that users can only see their own data
 - [ ] Start throwing up some functionality! No real styles yet, just make it work.
 - [ ] Write function to populate database on start

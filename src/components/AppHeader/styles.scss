@@ -14,19 +14,24 @@
   line-height: 1;
   text-align: center;
 
-  h1 {
+  .brand {
     color: inherit;
     font-family: inherit;
     font-weight: inherit;
+
+    a {
+      @extend %remove-link-decoration;
+      color: inherit;
+    }
   }
   .app-header-nav {
     display: flex;
   }
   .nav-item {
+    @extend %remove-link-decoration;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: none;
     text-align: center;
     color: inherit;
     border-radius: 100%;
@@ -87,7 +92,7 @@
       $icon-size,
       $link-margin
     );
-    h1 {
+    .brand {
       font-size: 1.5em;
     }
     .app-header-nav {
@@ -107,7 +112,7 @@
       $icon-size,
       $link-margin
     );
-    h1 {
+    .brand {
       transform: rotate(90deg) translate(-93%, 0);
       transform-origin: 0 100%;
       white-space: nowrap;

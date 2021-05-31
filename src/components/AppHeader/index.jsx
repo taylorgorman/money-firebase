@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { Image, ListGroup, OverlayTrigger, Popover } from 'react-bootstrap'
 import { PaletteFill, GearFill } from 'react-bootstrap-icons'
 
@@ -8,7 +8,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 export default function AppHeader() {
   return (
     <header className="app-header">
-      <h1>Sir Pigglesworth</h1>
+      <p className="brand"><Link to="/">Sir Pigglesworth</Link></p>
       <nav className="app-header-nav">
         <NavLink to="/style-guide" className="nav-item">
           <PaletteFill />
@@ -51,4 +51,4 @@ const profileLinks = (
       </ListGroup>
     </Popover.Content>
   </Popover>
-);
+)

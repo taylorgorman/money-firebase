@@ -1,6 +1,14 @@
 @import 'start';
 
-body {
+.app-header ~ main {
+  @media ( max-width: $app-ui-breakpoint - 1 ) {
+    padding-top: $app-header-height-sm;
+  }
+  @media ( min-width: $app-ui-breakpoint ) {
+    padding-left: $app-header-width-md;
+  }
+}
+.app-header ~ .app-nav ~ main {
   @media ( max-width: $app-ui-breakpoint - 1 ) {
     padding-top: $app-header-height-sm;
     padding-bottom: $app-nav-height-sm;

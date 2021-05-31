@@ -101,12 +101,15 @@ a {
   border-radius: $border-radius;
 }
 a.list-group-item {
-  background: none;
+  @extend %remove-link-decoration;
 }
 
 // Pop overs
 //
 .popover-body {
+  .list-group {
+    margin: -$list-group-item-padding-y / 2 (-$list-group-item-padding-x / 2)
+  }
   .list-group-item {
     border: 0;
   }
@@ -118,15 +121,25 @@ a.list-group-item {
   line-height: 1.2;
   font-size: .9em;
 
+  th {
+    font-family: $font-family-sans-serif;
+    font-size: $small-font-size;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
   td,
   th {
     vertical-align: baseline;
+  }
+  thead:first-child th,
+  tbody:first-child td {
+    border-top: 0;
   }
   .line2 {
     display: block;
     font-style: italic;
     opacity: .6;
-    font-size: .8em;
-    margin-top: .25em;
+    font-size: .9em;
+    margin-top: .5em;
   }
 }

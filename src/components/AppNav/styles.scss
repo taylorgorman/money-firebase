@@ -14,8 +14,8 @@
     line-height: 1;
   }
   a {
+    @extend %remove-link-decoration;
     display: block;
-    background: none;
     flex-grow: 1;
 
     .inner {
