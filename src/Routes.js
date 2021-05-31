@@ -27,6 +27,7 @@ export default function Routes() {
     return (
       <BrowserRouter>
         <AppHeader />
+        <AppNav />
         <Switch>
           <Route exact path="/" component={ user ? Dashboard : Home } />
           <Route path="/signin" component={ SignIn } />
@@ -37,7 +38,6 @@ export default function Routes() {
           <PrivateRoute path="/categories" component={ Categories } />
           <PrivateRoute path="/settings" component={ Settings } />
         </Switch>
-        <AppNav />
       </BrowserRouter>
     )
 }
