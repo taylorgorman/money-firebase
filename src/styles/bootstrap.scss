@@ -1,28 +1,10 @@
+
 // Container
 //
 @include media-breakpoint-up(md) {
   .container {
     padding-left: $container-padding-x;
     padding-right: $container-padding-x;
-  }
-}
-
-// Link
-//
-a {
-  $link-bg-color: rgba($green, .25);
-
-  background: linear-gradient(
-    to bottom, $link-bg-color 0%,
-    $link-bg-color 100%
-  );
-  background-position: 0 100%;
-  background-repeat: repeat-x;
-  background-size: 100% .25em;
-  transition: all .2s;
-
-  &:hover {
-    background-size: 100% 100%;
   }
 }
 
@@ -70,6 +52,25 @@ ul, ol {
   }
 }
 
+// Links
+//
+a {
+  $link-bg-color: rgba($green, .25);
+
+  background: linear-gradient(
+    to bottom, $link-bg-color 0%,
+    $link-bg-color 100%
+  );
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 100% .25em;
+  transition: all .2s;
+
+  &:hover {
+    background-size: 100% 100%;
+  }
+}
+
 // Badges
 //
 .badge {
@@ -91,3 +92,25 @@ ul, ol {
   }
 }
 
+// List group
+//
+.list-group-item {
+  font-family: $font-family-sans-serif;
+  font-size: .8em;
+  font-weight: bold;
+  border-radius: $border-radius;
+}
+a.list-group-item {
+  background: none;
+}
+
+// Pop overs
+//
+.popover-body {
+  .list-group {
+    // margin: -$popover-body-padding-y (-$popover-body-padding-x);
+  }
+  .list-group-item {
+    border: 0;
+  }
+}

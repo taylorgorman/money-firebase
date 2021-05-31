@@ -1,0 +1,18 @@
+@import '../../styles/start';
+
+section.sign-in {
+  .btn {
+    display: block;
+    width: 100%;
+    margin: 1em 0;
+  }
+
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 1px $gray-200;
+    background: $white;
+  }
+}

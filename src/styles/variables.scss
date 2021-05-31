@@ -31,6 +31,16 @@ $danger: $coral;
 $light: $white;
 $dark: $maroon-dark;
 
+$google: #ea4335;
+$facebook: #3b5998;
+$twitter: #1da1f2;
+
+$theme-colors: (
+  "google": $google,
+  "facebook": $facebook,
+  "twitter": $twitter,
+);
+
 // Body
 //
 $body-bg: $gray-100;
@@ -106,3 +116,13 @@ $badge-font-weight: bold;
 $badge-padding-y: .45em;
 $badge-padding-x: 1em;
 $badge-border-radius: 10em;
+
+// List groups
+//
+$list-group-item-padding-y: .5em;
+$list-group-item-padding-x: 1em;
+
+// Popovers
+//
+$popover-body-padding-y: .5em;
+$popover-body-padding-x: .5em;

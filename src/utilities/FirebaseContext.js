@@ -45,7 +45,15 @@ export function FirebaseProvider({ children }) {
     const provider = new firebase.auth.GoogleAuthProvider()
     auth.signInWithPopup( provider )
   }
-
+  function signInWithFacebook() {
+    const provider = new firebase.auth.FacebookAuthProvider()
+    auth.signInWithPopup( provider )
+  }
+  function signInWithTwitter() {
+    const provider = new firebase.auth.TwitterAuthProvider()
+    auth.signInWithPopup( provider )
+  }
+  
   // context provider
   return <FirebaseContext.Provider value={{
     firebase,
@@ -56,6 +64,8 @@ export function FirebaseProvider({ children }) {
     signOut,
     firestore,
     signInWithGoogle,
+    signInWithFacebook,
+    signInWithTwitter,
   }}>
     { children }
   </FirebaseContext.Provider>

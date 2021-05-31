@@ -37,8 +37,8 @@ export default function Transactions() {
 
         <Table className="transactions">
         <tbody>
-          { data.map(( transaction ) => (
-            <tr>
+          { data.map(( transaction, key ) => (
+            <tr key={ key }>
               <td>
                 { transaction.merchant }
                 <span className="second-line">
