@@ -55,7 +55,7 @@ export default function Home() {
           <thead>
           <tr>
             {Object.keys(data[0]).map((title, key) => <th key={key}>{title}</th>)}
-            </tr>
+          </tr>
           </thead>
           <tbody>
           {data.map((platform, key) => (

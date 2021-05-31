@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Button, Form, Col } from 'react-bootstrap'
+import { Table, Button, Form, Col, Badge } from 'react-bootstrap'
 import Layout from '../../components/Layout'
 import Section from '../../components/Section'
 
@@ -114,6 +114,22 @@ export default function StyleGuide() {
             'Link'
           ].map(( variant ) => (
             <Button variant={ variant.toLowerCase() }>{ variant }</Button>
+          ))}
+        </p>
+
+        <h2>Badges</h2>
+        <p className="badges">
+          {[
+            'Primary',
+            'Secondary',
+            'Success',
+            'Warning',
+            'Danger',
+            'Info',
+            'Light',
+            'Dark',
+          ].map(( variant ) => (
+            <Badge variant={ variant.toLowerCase() }>{ variant }</Badge>
           ))}
         </p>
 

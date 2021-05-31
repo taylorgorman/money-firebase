@@ -1,0 +1,26 @@
+@import '../../styles/start';
+
+table.transactions {
+  font-size: $small-font-size;
+
+  td {
+    vertical-align: baseline;
+  }
+  .second-line {
+    display: block;
+
+    span {
+      margin-right: .75em;
+    }
+  }
+  .badge {
+    padding-bottom: $badge-padding-y - .1;
+  }
+  .description {
+    font-style: italic;
+    opacity: .6;
+  }
+  .amount {
+    text-align: right;
+  }
+}
