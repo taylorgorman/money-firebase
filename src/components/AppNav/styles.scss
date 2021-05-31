@@ -19,7 +19,7 @@
     flex-grow: 1;
 
     .inner {
-      display: flex;
+      display: inline-block;
       align-items: center;
       position: relative;
 
@@ -62,6 +62,7 @@
       .inner {
         height: $app-nav-height-sm;
         justify-content: center;
+        padding-top: ($app-nav-height-sm - 1) / 2;
 
         &::after {
           width: 100%;
@@ -131,6 +132,12 @@
           }
         }
       }
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    a .inner {
+      display: flex;
+      padding-top: 0;
     }
   }
 }
