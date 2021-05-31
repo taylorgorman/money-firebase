@@ -1,0 +1,14 @@
+@import '../../styles/start.scss';
+
+.currency {
+  display: flex;
+  width: 100%;
+
+  &.is-negative {
+    color: $danger;
+  }
+  .amount {
+    flex-grow: 1;
+    text-align: right;
+  }
+}

@@ -1,4 +1,5 @@
 import { Badge, Table } from 'react-bootstrap'
+import Currency from '../../components/Currency'
 import Layout from '../../components/Layout'
 import Section from '../../components/Section'
 
@@ -12,7 +13,7 @@ export default function Transactions() {
       "merchant": "PayPal - Preemptive Love",
       "category": "Giving / Donations",
       "description": "dnation",
-      "amount": "-$2.06",
+      "amount": -2.06,
       "account": "Regular Expenses",
     },
     {
@@ -20,7 +21,7 @@ export default function Transactions() {
       "merchant": "Coinbase",
       "category": "Investments ..or Gambling",
       "description": "",
-      "amount": "-$20.00",
+      "amount": -20,
       "account": "Regular Expenses",
     },
   ]
@@ -31,36 +32,41 @@ export default function Transactions() {
 
   return (
     <Layout>
-      <Section>
+    <Section>
 
-        <h1>Transactions</h1>
+      <h1>Transactions</h1>
 
-        <Table className="transactions">
-        <tbody>
-          { data.map(( transaction, key ) => (
-            <tr key={ key }>
-              <td>
-                { transaction.merchant }
-                <span className="second-line">
-                  <Category className="d-md-none" category={ transaction.category } />
-                  { transaction.description && <span className="description">{ transaction.description }</span> }
-                </span>
-              </td>
-              <td className="category">
-                <Category className="d-none d-md-inline-block" category={ transaction.category } />
-              </td>
-              <td className="account">
-                { transaction.account }
-              </td>
-              <td className="amount">
-                { transaction.amount }
-              </td>
-            </tr>
-          )) }
-        </tbody>
-        </Table>
+      <Table responsive>
+      <thead>
+        <tr>
+          <th>Merchant</th>
+          <th className="d-none d-sm-table-cell">Category</th>
+          <th className="d-none d-md-table-cell">Account</th>
+          <th className="text-right">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+      { data.map(( transaction, key ) => (
+        <tr key={ key }>
+          <td>
+            { transaction.merchant }
+            <span className="line2">
+              { transaction.description && (
+                <span className="description">{ transaction.description }</span>
+              ) }
+            </span>
+          </td>
+          <td className="category d-none d-sm-table-cell"><Category category={ transaction.category } /></td>
+          <td className="account d-none d-md-table-cell">{ transaction.account }</td>
+          <td className="amount">
+            <Currency amount={ transaction.amount } />
+          </td>
+        </tr>
+      )) }
+      </tbody>
+      </Table>
 
-      </Section>
+    </Section>
     </Layout>
   )
 }
