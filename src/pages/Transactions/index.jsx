@@ -3,8 +3,6 @@ import Currency from '../../components/Currency'
 import Layout from '../../components/Layout'
 import Section from '../../components/Section'
 
-import './styles.scss'
-
 export default function Transactions() {
 
   const data = [
