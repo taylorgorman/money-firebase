@@ -3,11 +3,9 @@ import { Image, ListGroup, OverlayTrigger, Popover } from 'react-bootstrap'
 import { PaletteFill, GearFill } from 'react-bootstrap-icons'
 
 import './styles.scss'
-import { useFirebase } from '../../utilities/FirebaseContext'
 import { LinkContainer } from 'react-router-bootstrap'
 
 export default function AppHeader() {
-  const { signOut } = useFirebase()
   return (
     <header className="app-header">
       <h1>Sir Pigglesworth</h1>
