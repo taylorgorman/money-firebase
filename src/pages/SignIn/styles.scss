@@ -12,7 +12,7 @@ section.sign-in {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: solid 1px $gray-200;
+    box-shadow: $box-shadow;
     background: $white;
   }
 }

@@ -1,12 +1,16 @@
-import { Link, NavLink } from 'react-router-dom'
 import { Image, ListGroup, OverlayTrigger, Popover } from 'react-bootstrap'
-import { PaletteFill, GearFill } from 'react-bootstrap-icons'
+import { PaletteFill, GearFill, BoxArrowRight, BoxArrowInRight } from 'react-bootstrap-icons'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Link, NavLink } from 'react-router-dom'
 
 import './styles.scss'
-import { LinkContainer } from 'react-router-bootstrap'
+import { useFirebase } from '../../utilities/FirebaseContext'
 
 export default function AppHeader() {
-  return (
+
+  const { user, signOut } = useFirebase()
+
+  return ( <>
     <header className="app-header">
       <p className="brand"><Link to="/">Sir Pigglesworth</Link></p>
       <nav className="app-header-nav">
@@ -18,13 +22,23 @@ export default function AppHeader() {
           <GearFill />
           <span className="sr-only">Settings</span>
         </NavLink>
-        <span className="nav-item">
-          <Avatar className="avatar" />
-          <span className="sr-only">Sign Out</span>
-        </span>
+        { user
+        ? (
+          <button onClick={ signOut } className="nav-item">
+            <BoxArrowRight />
+            <span className="sr-only">Sign out</span>
+          </button>
+        )
+        : (
+          <NavLink to="/settings" className="nav-item">
+            <BoxArrowInRight />
+            <span className="sr-only">Sign in</span>
+          </NavLink>
+        ) }
       </nav>
     </header>
-  )
+  </> )
+
 }
 
 function Avatar({ className }) {
@@ -43,12 +57,19 @@ function Avatar({ className }) {
 const profileLinks = (
   <Popover id="profile-links">
     <Popover.Content>
-      <ListGroup>
-        <LinkContainer to="/profile">
-          <ListGroup.Item action>Profile</ListGroup.Item>
-        </LinkContainer>
-        <ListGroup.Item>Sign Out</ListGroup.Item>
-      </ListGroup>
+      <ProfileComponent />
     </Popover.Content>
   </Popover>
 )
+
+function ProfileComponent() {
+  const { signOut } = useFirebase()
+  return (
+    <ListGroup>
+      <LinkContainer to="/profile">
+        <ListGroup.Item action>Profile</ListGroup.Item>
+      </LinkContainer>
+      <ListGroup.Item action onClick={ signOut }>Sign Out</ListGroup.Item>
+    </ListGroup>
+  )
+}

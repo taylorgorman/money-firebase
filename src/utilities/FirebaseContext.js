@@ -36,10 +36,10 @@ export function FirebaseProvider({ children }) {
   }
 
   // auth
-  const [ user, loading, error ] = useAuthState(auth)
+  const [ user, loading, error ] = useAuthState( auth )
   const userLoading = loading
   const userError = error
-  const signOut = auth.signOut
+  const signOut = () => { auth.signOut() }
 
   function signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider()
