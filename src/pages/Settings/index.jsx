@@ -8,13 +8,14 @@ import { Redirect, Route, Switch } from 'react-router'
 import Access from './Access'
 import Categories from './Categories'
 import Labels from './Labels'
+import Preferences from './Preferences'
 
 export default function Settings() {
   const subpages = [
     {
-      path: '/access',
-      title: 'Access',
-      component: Access,
+      path: '/preferences',
+      title: 'Preferences',
+      component: Preferences,
     },
     {
       path: '/categories',
@@ -25,6 +26,11 @@ export default function Settings() {
       path: '/labels',
       title: 'Labels',
       component: Labels,
+    },
+    {
+      path: '/access',
+      title: 'Access',
+      component: Access,
     },
   ]
   return (
