@@ -2,6 +2,7 @@ import { Badge, Table } from 'react-bootstrap'
 import Currency from '../../components/Currency'
 import Layout from '../../components/Layout'
 import Section from '../../components/Section'
+import PageHeading from '../../components/PageHeading'
 
 export default function Transactions() {
 
@@ -32,7 +33,7 @@ export default function Transactions() {
     <Layout>
     <Section>
 
-      <h1>Transactions</h1>
+      <PageHeading hasSettings>Transactions</PageHeading>
 
       <Table responsive>
       <thead>
