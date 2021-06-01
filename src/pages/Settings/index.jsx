@@ -6,6 +6,8 @@ import Layout from '../../components/Layout'
 import Section from '../../components/Section'
 import { Route, Switch } from 'react-router'
 import Access from './Access'
+import Categories from './Categories'
+import Labels from './Labels'
 
 export default function Settings() {
   return (
@@ -23,12 +25,12 @@ export default function Settings() {
               children: 'Access',
             },
             {
-              link: '/settings/another',
-              children: 'Another',
+              link: '/settings/categories',
+              children: 'Categories',
             },
             {
-              link: '/settings/heres-a-page',
-              children: 'Here\'s a page',
+              link: '/settings/labels',
+              children: 'Labels',
             },
           ].map(( item ) => (
             <LinkContainer to={ item.link }>
@@ -41,6 +43,8 @@ export default function Settings() {
       <Container>
         <Switch>
           <Route path="/settings/access" component={ Access } />
+          <Route path="/settings/categories" component={ Categories } />
+          <Route path="/settings/labels" component={ Labels } />
         </Switch>
       </Container>
       </Col>
