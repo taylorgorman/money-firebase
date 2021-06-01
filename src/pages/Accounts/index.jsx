@@ -11,7 +11,7 @@ export default function Accounts() {
       "name": "Regular Expenses",
       "bank": "Bank of America",
       "type": "checking",
-      "balance": 5220.39,
+      "balance": 522.39,
     },
     {
       "name": "Sapphire Reserve",
@@ -23,25 +23,25 @@ export default function Accounts() {
       "name": "Fun",
       "bank": "Bank of America",
       "type": "checking",
-      "balance": 338.94,
+      "balance": 33.94,
     },
     {
       "name": "Big Adventures",
       "bank": "Bank of America",
       "type": "savings",
-      "balance": 12243.16,
+      "balance": 1243.16,
     },
     {
       "name": "Debts and Irregular",
       "bank": "Bank of America",
       "type": "savings",
-      "balance": 892.94,
+      "balance": 82.94,
     },
     {
       "name": "Emergencies",
       "bank": "Bank of America",
       "type": "savings",
-      "balance": 16479.25,
+      "balance": 1649.25,
     },
     {
       "name": "Venmo",
