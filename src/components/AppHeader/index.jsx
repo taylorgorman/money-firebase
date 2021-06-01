@@ -1,5 +1,5 @@
 import { Image, ListGroup, OverlayTrigger, Popover } from 'react-bootstrap'
-import { PaletteFill, GearFill, BoxArrowRight, BoxArrowInRight } from 'react-bootstrap-icons'
+import { PaletteFill, GearFill, BoxArrowInRight } from 'react-bootstrap-icons'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link, NavLink } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ import { useFirebase } from '../../utilities/FirebaseContext'
 
 export default function AppHeader() {
 
-  const { user, signOut } = useFirebase()
+  const { user } = useFirebase()
 
   return ( <>
     <header className="app-header">
@@ -24,10 +24,10 @@ export default function AppHeader() {
         </NavLink>
         { user
         ? (
-          <button onClick={ signOut } className="nav-item">
-            <BoxArrowRight />
-            <span className="sr-only">Sign out</span>
-          </button>
+          <span className="nav-item">
+            <Avatar className="avatar" />
+            <span className="sr-only">Your Account</span>
+          </span>
         )
         : (
           <NavLink to="/signin" className="nav-item">
@@ -57,12 +57,12 @@ function Avatar({ className }) {
 const profileLinks = (
   <Popover id="profile-links">
     <Popover.Content>
-      <ProfileComponent />
+      <ProfileLinksList />
     </Popover.Content>
   </Popover>
 )
 
-function ProfileComponent() {
+function ProfileLinksList() {
   const { signOut } = useFirebase()
   return (
     <ListGroup>
