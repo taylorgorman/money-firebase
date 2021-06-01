@@ -1,11 +1,12 @@
 import Layout from '../../components/Layout'
 import Section from '../../components/Section'
+import PageHeading from '../../components/PageHeading'
 
 export default function Dashboard() {
   return (
     <Layout>
       <Section>
-        <h1>Dashboard</h1>
+        <PageHeading hasSettings>Dashboard</PageHeading>
         <ul>
           <li>Accounts balances and total</li>
           <li>Most recent transactions</li>

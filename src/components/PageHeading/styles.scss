@@ -1,0 +1,16 @@
+@import '../../styles/start.scss';
+
+.page-heading {
+  display: flex;
+  align-items: center;
+
+  h1 {
+    flex-grow: 1;
+  }
+  a {
+    @extend %remove-link-decoration;
+  }
+  svg {
+    margin-top: .3em;
+  }
+}

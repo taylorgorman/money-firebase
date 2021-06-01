@@ -1,11 +1,12 @@
 import Layout from '../../components/Layout'
+import PageHeading from '../../components/PageHeading'
 import Section from '../../components/Section'
 
 export default function Reports() {
   return (
     <Layout>
       <Section>
-        <h1>Reports</h1>
+        <PageHeading hasSettings>Reports</PageHeading>
         <ul>
           <li>Net worth over time</li>
           <li>Income and expense over time</li>
