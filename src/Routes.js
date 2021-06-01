@@ -7,6 +7,7 @@ import Accounts from './pages/Accounts'
 import Categories from './pages/Categories'
 import Dashboard from './pages/Dashboard'
 import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 import Profile from './pages/Profile'
 import Reports from './pages/Reports'
 import Settings from './pages/Settings'
@@ -39,6 +40,7 @@ export default function Routes() {
           <PrivateRoute path="/categories" component={ Categories } />
           <PrivateRoute path="/profile" component={ Profile } />
           <PrivateRoute path="/settings" component={ Settings } />
+          <Route component={ NotFound } />
         </Switch>
     </> )
 }
