@@ -4,12 +4,29 @@ import { LinkContainer } from 'react-router-bootstrap'
 import './styles.scss'
 import Layout from '../../components/Layout'
 import Section from '../../components/Section'
-import { Route, Switch } from 'react-router'
+import { Redirect, Route, Switch } from 'react-router'
 import Access from './Access'
 import Categories from './Categories'
 import Labels from './Labels'
 
 export default function Settings() {
+  const subpages = [
+    {
+      path: '/access',
+      title: 'Access',
+      component: Access,
+    },
+    {
+      path: '/categories',
+      title: 'Categories',
+      component: Categories,
+    },
+    {
+      path: '/labels',
+      title: 'Labels',
+      component: Labels,
+    },
+  ]
   return (
     <Layout page="settings">
     <Section>
@@ -19,22 +36,9 @@ export default function Settings() {
       <Row>
       <Col md={3}>
         <ListGroup>
-          { [
-            {
-              link: '/settings/access',
-              children: 'Access',
-            },
-            {
-              link: '/settings/categories',
-              children: 'Categories',
-            },
-            {
-              link: '/settings/labels',
-              children: 'Labels',
-            },
-          ].map(( item ) => (
-            <LinkContainer to={ item.link }>
-              <ListGroup.Item action>{ item.children }</ListGroup.Item>
+          { subpages.map(( subpage ) => (
+            <LinkContainer to={ `/settings${ subpage.path }` }>
+              <ListGroup.Item action>{ subpage.title }</ListGroup.Item>
             </LinkContainer>
           )) }
         </ListGroup>
@@ -42,9 +46,10 @@ export default function Settings() {
       <Col className="p-0">
       <Container>
         <Switch>
-          <Route path="/settings/access" component={ Access } />
-          <Route path="/settings/categories" component={ Categories } />
-          <Route path="/settings/labels" component={ Labels } />
+          <Redirect exact path="/settings" to={ `/settings${ subpages[0].path }` } />
+          { subpages.map(( subpage ) => (
+            <Route path={ `/settings${ subpage.path }` } component={ subpage.component } />
+          )) }
         </Switch>
       </Container>
       </Col>
