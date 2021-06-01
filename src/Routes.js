@@ -1,5 +1,5 @@
 import { Spinner } from 'react-bootstrap'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import AppHeader from './components/AppHeader'
 import AppNav from './components/AppNav'
@@ -7,6 +7,7 @@ import Accounts from './pages/Accounts'
 import Categories from './pages/Categories'
 import Dashboard from './pages/Dashboard'
 import Home from './pages/Home'
+import Profile from './pages/Profile'
 import Reports from './pages/Reports'
 import Settings from './pages/Settings'
 import SignIn from './pages/SignIn'
@@ -30,11 +31,13 @@ export default function Routes() {
         <Switch>
           <Route exact path="/" component={ user ? Dashboard : Home } />
           <Route path="/signin" component={ SignIn } />
+          <Redirect path="/login" to="/signin" />
           <PrivateRoute path="/style-guide" component={ StyleGuide } />
           <PrivateRoute path="/transactions" component={ Transactions } />
           <PrivateRoute path="/reports" component={ Reports } />
           <PrivateRoute path="/accounts" component={ Accounts } />
           <PrivateRoute path="/categories" component={ Categories } />
+          <PrivateRoute path="/profile" component={ Profile } />
           <PrivateRoute path="/settings" component={ Settings } />
         </Switch>
     </> )
