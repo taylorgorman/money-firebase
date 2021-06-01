@@ -13,6 +13,7 @@ section.sign-in {
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: $box-shadow;
+    border-radius: $border-radius;
     background: $white;
   }
 }

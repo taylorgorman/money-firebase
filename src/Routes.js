@@ -1,5 +1,5 @@
 import { Spinner } from 'react-bootstrap'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import AppHeader from './components/AppHeader'
 import AppNav from './components/AppNav'
@@ -24,8 +24,7 @@ export default function Routes() {
   
   // Routes
   else
-    return (
-      <BrowserRouter>
+    return ( <>
         <AppHeader />
         <AppNav />
         <Switch>
@@ -38,6 +37,5 @@ export default function Routes() {
           <PrivateRoute path="/categories" component={ Categories } />
           <PrivateRoute path="/settings" component={ Settings } />
         </Switch>
-      </BrowserRouter>
-    )
+    </> )
 }

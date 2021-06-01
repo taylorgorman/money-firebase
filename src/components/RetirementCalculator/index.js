@@ -30,7 +30,6 @@ export default function RetirementCalculator() {
   ]);
 
   const onSubmit = (event) => {
-    console.log("onSubmit");
     event.preventDefault();
   };
 

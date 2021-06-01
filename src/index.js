@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom'
 import reportWebVitals from './reportWebVitals'
 
 import './index.scss'
-import { FirebaseProvider } from './utilities/FirebaseContext'
 import Routes from './Routes'
+import { BrowserRouter } from 'react-router-dom'
+import { FirebaseProvider } from './utilities/FirebaseContext'
 
 const ReactApp = () => (
   <React.StrictMode>
-    <FirebaseProvider>
-      <Routes />
-    </FirebaseProvider>
+    <BrowserRouter>
+      <FirebaseProvider>
+        <Routes />
+      </FirebaseProvider>
+    </BrowserRouter>
   </React.StrictMode>
 )
 ReactDOM.render( <ReactApp />, document.getElementById( 'root' ) )

@@ -30,7 +30,7 @@ export default function AppHeader() {
           </button>
         )
         : (
-          <NavLink to="/settings" className="nav-item">
+          <NavLink to="/signin" className="nav-item">
             <BoxArrowInRight />
             <span className="sr-only">Sign in</span>
           </NavLink>

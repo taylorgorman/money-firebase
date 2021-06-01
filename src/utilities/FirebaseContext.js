@@ -1,12 +1,15 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useEffect } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { useHistory } from 'react-router-dom'
 
 const FirebaseContext = createContext()
 
 export function FirebaseProvider({ children }) {
+
+  const history = useHistory()
 
   // global utilities
   const isFirebaseInitialized = firebase.apps.length > 0
@@ -39,7 +42,10 @@ export function FirebaseProvider({ children }) {
   const [ user, loading, error ] = useAuthState( auth )
   const userLoading = loading
   const userError = error
-  const signOut = () => { auth.signOut() }
+  const signOut = () => {
+    auth.signOut()
+    history.push('/')
+  }
 
   function signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider()
@@ -53,6 +59,19 @@ export function FirebaseProvider({ children }) {
     const provider = new firebase.auth.TwitterAuthProvider()
     auth.signInWithPopup( provider )
   }
+
+  // redirect to appropriate paths at appropriate times
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(( user ) => {
+      // if just signed in
+      if ( user && history.location.pathname === '/signin' ) {
+        const urlParams = new URLSearchParams( history.location.search )
+        // redirect to originally requested path or root
+        history.push( urlParams.get( 'redirectto' ) || '/' )
+      }
+    })
+    return () => unsubscribe();
+  })
   
   // context provider
   return <FirebaseContext.Provider value={{
