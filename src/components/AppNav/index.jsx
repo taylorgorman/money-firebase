@@ -23,7 +23,6 @@ export default function AppNav() {
         <AppNavLink to="/reports" text="Reports" Icon={ ClipboardData } />
         <hr />
         <AppNavLink to="/accounts" text="Accounts" Icon={ PiggyBank } />
-        <AppNavLink to="/categories" text="Categories" Icon={ Tags } />
       </nav>
     )
   else
