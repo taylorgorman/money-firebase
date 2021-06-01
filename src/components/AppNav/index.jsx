@@ -1,4 +1,4 @@
-import { ClipboardData, ListCheck, PiggyBank, Speedometer2, Tags } from 'react-bootstrap-icons'
+import { ClipboardData, ListCheck, PieChart, PiggyBank, Speedometer2 } from 'react-bootstrap-icons'
 import { NavLink } from 'react-router-dom'
 import { useFirebase } from '../../utilities/FirebaseContext'
 
@@ -20,6 +20,7 @@ export default function AppNav() {
       <nav className="app-nav">
         <AppNavLink to="/" text="Dashboard" Icon={ Speedometer2 } />
         <AppNavLink to="/transactions" text="Transactions" Icon={ ListCheck } />
+        <AppNavLink to="/budgets" text="Budgets" Icon={ PieChart } />
         <AppNavLink to="/reports" text="Reports" Icon={ ClipboardData } />
         <hr />
         <AppNavLink to="/accounts" text="Accounts" Icon={ PiggyBank } />

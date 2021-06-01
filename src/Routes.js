@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import AppHeader from './components/AppHeader'
 import AppNav from './components/AppNav'
 import Accounts from './pages/Accounts'
+import Budgets from './pages/Budgets'
 import Dashboard from './pages/Dashboard'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
@@ -32,8 +33,8 @@ export default function Routes() {
           <Route exact path="/" component={ user ? Dashboard : Home } />
           <Route path="/signin" component={ SignIn } />
           <Redirect path="/login" to="/signin" />
-          <PrivateRoute path="/style-guide" component={ StyleGuide } />
           <PrivateRoute path="/transactions" component={ Transactions } />
+          <PrivateRoute path="/budgets" component={ Budgets } />
           <PrivateRoute path="/reports" component={ Reports } />
           <PrivateRoute path="/accounts" component={ Accounts } />
           <PrivateRoute path="/profile" component={ Profile } />
@@ -41,6 +42,7 @@ export default function Routes() {
           <Redirect path="/access" to="/settings/access" />
           <Redirect path="/categories" to="/settings/categories" />
           <Redirect path="/labels" to="/settings/labels" />
+          <PrivateRoute path="/style-guide" component={ StyleGuide } />
           <Route component={ NotFound } />
         </Switch>
     </> )
