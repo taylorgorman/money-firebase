@@ -6,6 +6,10 @@ export default function Reports() {
     <Layout>
       <Section>
         <h1>Reports</h1>
+        <ul>
+          <li>Net worth over time</li>
+          <li>Income and expense over time</li>
+        </ul>
       </Section>
     </Layout>
   )

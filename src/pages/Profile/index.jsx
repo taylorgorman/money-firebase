@@ -6,6 +6,10 @@ export default function Profile() {
     <Layout>
       <Section>
         <h1>Profile</h1>
+        <ul>
+          <li>Change profile photo, name, contact info</li>
+          <li>Delete account</li>
+        </ul>
       </Section>
     </Layout>
   )
