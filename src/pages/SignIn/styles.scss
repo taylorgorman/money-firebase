@@ -1,19 +1,17 @@
 @import '../../styles/start';
 
 section.sign-in {
+  .card {
+    max-width: 20em;
+    margin: 0 auto;
+
+    @include media-breakpoint-up(md) {
+      margin-top: 15%;
+    }
+  }
   .btn {
     display: block;
     width: 100%;
     margin: 1em 0;
-  }
-
-  @include media-breakpoint-up(md) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: $box-shadow;
-    border-radius: $border-radius;
-    background: $white;
   }
 }

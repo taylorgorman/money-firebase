@@ -155,3 +155,13 @@ a.list-group-item {
     margin-top: .5em;
   }
 }
+
+// Cards
+//
+.card {
+  box-shadow: $box-shadow;
+
+  .badge-light {
+    background-color: $gray-100;
+  }
+}
