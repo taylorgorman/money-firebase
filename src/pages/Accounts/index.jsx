@@ -1,106 +1,85 @@
-import { Badge, Table } from 'react-bootstrap'
-import Currency from '../../components/Currency'
+import { useState } from 'react'
+import { Col, Form, Row } from 'react-bootstrap'
 
 import Layout from '../../components/Layout'
+import PageHeading from '../../components/PageHeading'
 import Section from '../../components/Section'
+import { dashed } from '../../utilities/formatString'
+import AccountsRows from './AccountsRows'
+import AccountsCards from './AccountsCards'
+import AccountsTable from './AccountsTable'
 
 export default function Accounts() {
 
-  const data = [
-    {
-      "name": "Regular Expenses",
-      "bank": "Bank of America",
-      "type": "checking",
-      "balance": 522.39,
-    },
-    {
-      "name": "Sapphire Reserve",
-      "bank": "Chase",
-      "type": "credit",
-      "balance": -1162.87,
-    },
-    {
-      "name": "Fun",
-      "bank": "Bank of America",
-      "type": "checking",
-      "balance": 33.94,
-    },
-    {
-      "name": "Big Adventures",
-      "bank": "Bank of America",
-      "type": "savings",
-      "balance": 1243.16,
-    },
-    {
-      "name": "Debts and Irregular",
-      "bank": "Bank of America",
-      "type": "savings",
-      "balance": 82.94,
-    },
-    {
-      "name": "Emergencies",
-      "bank": "Bank of America",
-      "type": "savings",
-      "balance": 1649.25,
-    },
-    {
-      "name": "Venmo",
-      "bank": "Venmo",
-      "type": "checking",
-      "balance": -30,
-    },
-    {
-      "name": "Rewards Credit",
-      "bank": "Bank of America",
-      "type": "credit",
-      "balance": 0,
-    },
-    {
-      "name": "Travel Credit",
-      "bank": "Bank of America",
-      "type": "credit",
-      "balance": 0,
-    },
-  ]
+  const [ layout, setLayout ] = useState( 'Rows' )
+  const [ sortBy, setSortBy ] = useState( 'Amount' )
+  const [ showNetWorth, setShowNetWorth ] = useState( true )
 
   return (
     <Layout>
     <Section>
 
-      <h1>Accounts</h1>
+      <PageHeading hasSettings>Accounts</PageHeading>
 
-      <Table>
-      <thead>
-        <tr>
-          <th>Name, Bank</th>
-          <th>Type</th>
-          <th className="text-right">Balance</th>
-        </tr>
-      </thead>
-      <tbody>
-      { data.map(( account, key ) => (
-        <tr key={ key }>
-          <td className="name">
-            { account.name }
-            <span className="line2">{ account.bank }</span>
-          </td>
-          <td className="type"><Badge variant="light">{ account.type }</Badge></td>
-          <td className="balance" style={{ maxWidth: "5em" }}>
-            <Currency amount={ account.balance } />
-          </td>
-        </tr>
-      )) }
-      </tbody>
-      <tfoot>
-        <tr>
-          <th></th>
-          <th></th>
-          <th>
-            <Currency amount={ data.reduce( ( total, account ) => total + account.balance, 0 ) } />
-          </th>
-        </tr>
-      </tfoot>
-      </Table>
+      <Row>
+      <Col md>
+      <h5>Layout</h5>
+        <p>
+        { [
+          'Rows',
+          'Cards',
+          'Table',
+        ].map(( label, key) => (
+          <Form.Check
+            type="radio"
+            id={ dashed( label ) }
+            name="layout"
+            label={ label }
+            key={ key }
+            checked={ layout === label }
+            onChange={ () => setLayout( label ) }
+          />
+        )) }
+        </p>
+      </Col>
+      <Col>
+      <h5>Sort by</h5>
+        <p>
+        { [
+          'Amount',
+          'Name',
+          'Type',
+        ].map(( label, key) => (
+          <Form.Check
+            type="radio"
+            id={ dashed( label ) }
+            name="sort-by"
+            label={ label }
+            key={ key }
+            checked={ sortBy === label }
+            onChange={ () => setSortBy( label ) }
+          />
+        )) }
+        </p>
+      </Col>
+      <Col>
+        <h5>Net worth</h5>
+        <p>
+          <Form.Check
+            type="checkbox"
+            id="show-net-worth"
+            name="show-net-worth"
+            label="Show net worth"
+            checked={ showNetWorth }
+            onChange={ () => setShowNetWorth( ! showNetWorth ) }
+          />
+        </p>
+      </Col>
+      </Row>
+
+      { layout === 'Rows' && <AccountsRows showNetWorth={ showNetWorth } /> }
+      { layout === 'Cards' && <AccountsCards showNetWorth={ showNetWorth } /> }
+      { layout === 'Table' && <AccountsTable showNetWorth={ showNetWorth } /> }
 
     </Section>
     </Layout>

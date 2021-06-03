@@ -1,0 +1,55 @@
+@import '../../styles/start.scss';
+
+$account-row-spacer: $spacer * .5;
+
+.accounts-rows {
+  .total {
+    margin: 0 $account-row-spacer 0 0;
+    text-align: right;
+
+    .currency {
+      display: inline-block;
+      font-size: 1.5em;
+    }
+  }
+}
+.account-row {
+  margin: $account-row-spacer * .7 0;
+  
+  .card-body {
+    padding: $account-row-spacer * .7 $account-row-spacer;
+    display: flex;
+    align-items: center;
+  }
+  .flex-item {
+    padding: 0 $account-row-spacer / 2;
+
+    &:first-child {
+      padding-left: 0;;
+    }
+    &:last-child {
+      padding-right: 0;;
+    }
+  }
+  .name-bank {
+    width: 10em;
+  }
+  .bank {
+    display: block;
+    font-size: $small-font-size;
+    font-style: italic;
+    opacity: .6;
+  }
+  .type {
+    flex-grow: 1;
+  }
+  .currency {
+    width: 6em;
+    font-size: 1.2em;
+
+    &.is-negative {
+      width: 6.5em;
+      margin-right: -.25em;
+    }
+  }
+}

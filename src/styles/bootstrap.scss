@@ -92,6 +92,16 @@ a {
   }
 }
 
+// Forms
+//
+input[type=radio],
+input[type=checkbox] {
+  &,
+  + label {
+    cursor: pointer;
+  }
+}
+
 // List group
 //
 .list-group-item {
