@@ -8,13 +8,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { FirebaseProvider } from './utilities/FirebaseContext'
 
 const ReactApp = () => (
-  <React.StrictMode>
-    <BrowserRouter>
-      <FirebaseProvider>
-        <Routes />
-      </FirebaseProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <FirebaseProvider>
+      <Routes />
+    </FirebaseProvider>
+  </BrowserRouter>
 )
 ReactDOM.render( <ReactApp />, document.getElementById( 'root' ) )
 

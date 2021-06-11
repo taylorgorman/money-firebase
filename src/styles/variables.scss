@@ -135,10 +135,11 @@ $list-group-active-color: $green;
 
 // Popovers
 //
-$popover-body-padding-y: 1em;
-$popover-body-padding-x: 1em;
+$popover-body-padding-y: $spacer * .5;
+$popover-body-padding-x: $spacer * .5;
 $popover-border-width: 0;
 $popover-box-shadow: $box-shadow;
+$popover-max-width: none;
 
 // Cards
 //

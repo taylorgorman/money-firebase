@@ -29,38 +29,13 @@
     display: flex;
   }
   .nav-item {
-    @extend %remove-link-decoration;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: inherit;
-    border-radius: 100%;
+    @include icon-circle-link($secondary, $white);
 
-    .avatar {
-      cursor: pointer;
-    }
     img {
       width: 100%;
       height: 100%;
       border: solid 2px rgba($secondary, .2);
     }
-    &:hover,
-    &.active {
-      background-color: rgba($secondary, .2);
-    }
-    &.active {
-      svg {
-        fill: $white;
-      }
-    }
-  }
-  button {
-    appearance: none;
-    border: 0;
-  }
-  svg {
-    fill: $secondary;
   }
 
   @mixin icon( $icon-size, $link-margin ) {

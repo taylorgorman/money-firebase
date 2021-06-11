@@ -9,3 +9,44 @@
   letter-spacing: normal;
   font-weight: normal;
 }
+%icon-circle-link {
+  @extend %remove-link-decoration;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+  border-radius: 100%;
+  cursor: pointer;
+
+  svg {
+    width: 75%;
+    height: 75%;
+  }
+  &.active {
+    svg {
+      fill: $white;
+    }
+  }
+}
+@mixin icon-circle-link(
+  $size: 2em,
+  $color: $link-color,
+  $active-color: $link-hover-color
+) {
+  @extend %icon-circle-link;
+  width: $size;
+  height: $size;
+
+  svg {
+    fill: $color;
+  }
+  &:hover,
+  &.active {
+    background-color: rgba($color, .2);
+  }
+  &.active {
+    svg {
+      fill: $active-color;
+    }
+  }
+}

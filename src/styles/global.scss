@@ -20,9 +20,23 @@
 section {
   padding: $spacer 0;
 }
+form {
+  margin: $paragraph-margin-bottom 0;
+}
+button {
+  appearance: none;
+  border: 0;
+}
 .center-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.small-caps {
+  font-size: .8rem;
+  font-family: $font-family-sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $gray-500;
 }

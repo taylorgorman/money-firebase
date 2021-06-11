@@ -94,12 +94,13 @@ a {
 
 // Forms
 //
-input[type=radio],
-input[type=checkbox] {
-  &,
-  + label {
-    cursor: pointer;
-  }
+.form-check-input,
+.form-check-label {
+  cursor: pointer;
+}
+.form-check-label {
+  font-family: $font-family-sans-serif;
+  font-weight: bold;
 }
 
 // List group

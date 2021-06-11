@@ -3,14 +3,25 @@
 .page-heading {
   display: flex;
   align-items: center;
+  padding-bottom: $spacer * .5;
 
   h1 {
     flex-grow: 1;
   }
-  a {
-    @extend %remove-link-decoration;
-  }
-  svg {
+  .page-heading-settings-trigger {
+    @include icon-circle-link();
     margin-top: .3em;
+  }
+}
+.page-heading-settings {
+  .settings-row {
+    margin: -$popover-body-padding-y * .25 -$popover-body-padding-x * .25;
+  }
+  .setting {
+    padding: $popover-body-padding-y $popover-body-padding-x;
+  }
+  .setting-options {
+    margin-top: $popover-body-padding-y * .5;
+    white-space: nowrap;
   }
 }

@@ -8,7 +8,7 @@ export default function AccountsRows({ showNetWorth }) {
   return (
     <div className="accounts-rows">
       { data.map(( account, key ) => (
-        <Card body className="account-row">
+        <Card body className="account-row" key={ key }>
           <span className="flex-item name-bank">
             { account.name }
             <span className="bank">{ account.bank }</span>
