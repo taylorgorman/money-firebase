@@ -29,7 +29,10 @@
     display: flex;
   }
   .nav-item {
-    @include icon-circle-link($secondary, $white);
+    @include icon-circle-link(
+      $color: $secondary,
+      $active-color: $white
+    );
 
     img {
       width: 100%;
