@@ -63,6 +63,13 @@ $spacer: 3rem;
 
 // Grid
 //
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 720px,
+  lg: 992px,
+  xl: 1200px
+);
 $grid-gutter-width: $spacer;
 $container-padding-x: $spacer * 1.25;
 
@@ -146,3 +153,7 @@ $popover-max-width: none;
 $card-spacer-y: $spacer;
 $card-spacer-x: $spacer;
 $card-border-width: 0;
+
+// Accounts
+//
+$card-account-spacer: $spacer * .5;

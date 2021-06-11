@@ -1,14 +1,15 @@
-import data from './data.json'
-import Currency from '../../components/Currency'
 import { Badge, Card } from 'react-bootstrap'
 
 import './AccountsRows.scss'
+import data from './data.json'
+import Currency from '../../components/Currency'
+import AreaChart from '../../components/AreaChart'
 
 export default function AccountsRows({ showNetWorth }) {
   return (
     <div className="accounts-rows">
       { data.map(( account, key ) => (
-        <Card body className="account-row" key={ key }>
+        <Card body className="card-account account-row" key={ key }>
           <span className="flex-item name-bank">
             { account.name }
             <span className="bank">{ account.bank }</span>
@@ -16,6 +17,7 @@ export default function AccountsRows({ showNetWorth }) {
           <span className="flex-item type">
             <Badge variant="light">{ account.type }</Badge>
           </span>
+          <AreaChart className="flex-item" />
           <Currency className="flex-item" amount={ account.balance } />
         </Card>
       )) }

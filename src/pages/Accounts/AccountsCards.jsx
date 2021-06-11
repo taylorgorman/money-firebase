@@ -1,42 +1,35 @@
+import { Badge, Card, Col, Row } from 'react-bootstrap'
+
+import './AccountsCards.scss'
 import data from './data.json'
 import Currency from '../../components/Currency'
-import { Badge, Table } from 'react-bootstrap'
+import AreaChart from '../../components/AreaChart'
 
 export default function AccountsCards({ showNetWorth }) {
   return (
-    <Table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Bank</th>
-        <th>Type</th>
-        <th className="text-right">Balance</th>
-      </tr>
-    </thead>
-    <tbody>
-    { data.map(( account, key ) => (
-      <tr key={ key }>
-        <td className="name">{ account.name }</td>
-        <td className="bank">{ account.bank }</td>
-        <td className="type"><Badge variant="light">{ account.type }</Badge></td>
-        <td className="balance" style={{ maxWidth: "5em" }}>
-          <Currency amount={ account.balance } />
-        </td>
-      </tr>
-    )) }
-    </tbody>
-    { showNetWorth && (
-      <tfoot>
-      <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th>
+    <div className="accounts-cards">
+      <Row className="row">
+        { data.map(( account, key ) => (
+          <Col md={ 6 } xl={ 4 } key={ key }>
+            <Card body className="card-account account-card">
+              <div>
+                <Badge className="type" variant="light">{ account.type }</Badge>
+              </div>
+              <div className="name">{ account.name }</div>
+              <div className="bank">{ account.bank }</div>
+              <AreaChart />
+              <div>
+                <Currency className="balance" amount={ account.balance } />
+              </div>
+            </Card>
+          </Col>
+        )) }
+      </Row>
+      { showNetWorth && (
+        <div className="total">
           <Currency amount={ data.reduce( ( total, account ) => total + account.balance, 0 ) } />
-        </th>
-      </tr>
-    </tfoot>
-    ) }
-    </Table>
+        </div>
+      ) }
+    </div>
   )
 }

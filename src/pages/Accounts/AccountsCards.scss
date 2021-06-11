@@ -1,0 +1,15 @@
+@import '../../styles/start.scss';
+
+.account-card {
+  .badge {
+    margin: 0 0 .75em -.25em;
+  }
+  .area-chart {
+    height: 5em;
+    width: calc(100% + #{$card-account-spacer * 2});
+    margin: $card-account-spacer * .75 (-$card-account-spacer);
+  }
+  .currency {
+    margin-left: auto;
+  }
+}

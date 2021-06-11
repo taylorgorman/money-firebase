@@ -1,0 +1,18 @@
+@import '../../styles/start.scss';
+
+.card-account {
+  margin: $card-account-spacer * .7 0;
+
+  .card-body {
+    padding: $card-account-spacer $card-account-spacer;
+  }
+  .bank {
+    font-size: $small-font-size;
+    font-style: italic;
+    opacity: .6;
+  }
+  .currency {
+    width: 6em;
+    font-size: 1.2em;
+  }
+}

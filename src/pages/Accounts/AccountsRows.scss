@@ -1,10 +1,10 @@
 @import '../../styles/start.scss';
 
-$account-row-spacer: $spacer * .5;
+$card-account-spacer: $spacer * .5;
 
 .accounts-rows {
   .total {
-    margin: 0 $account-row-spacer 0 0;
+    margin: 0 $card-account-spacer 0 0;
     text-align: right;
 
     .currency {
@@ -14,42 +14,74 @@ $account-row-spacer: $spacer * .5;
   }
 }
 .account-row {
-  margin: $account-row-spacer * .7 0;
-  
   .card-body {
-    padding: $account-row-spacer * .7 $account-row-spacer;
     display: flex;
     align-items: center;
   }
   .flex-item {
-    padding: 0 $account-row-spacer / 2;
+    padding: 0 $card-account-spacer / 2;
+    // order: 1;
 
     &:first-child {
-      padding-left: 0;;
+      padding-left: 0;
     }
     &:last-child {
-      padding-right: 0;;
+      padding-right: 0;
     }
   }
   .name-bank {
-    width: 10em;
+    width: 9em;
   }
   .bank {
     display: block;
-    font-size: $small-font-size;
-    font-style: italic;
-    opacity: .6;
   }
   .type {
-    flex-grow: 1;
+    width: 7em;
   }
-  .currency {
-    width: 6em;
-    font-size: 1.2em;
+  .area-chart {
+    flex-grow: 1;
+    align-self: stretch;
+    margin: -$card-account-spacer $card-account-spacer * .5;
+  }
+  @include media-breakpoint-down(md) {
+    .card-body {
+      flex-wrap: wrap;
+    }
+    .type {
+      flex-grow: 1;
+    }
+    .area-chart {
+      width: 100%;
+      order: 99;
+      align-self: initial;
+      height: 3em;
+      margin: $card-account-spacer 0 (-$card-account-spacer) 0;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    $currency-width: 4.8em;
 
-    &.is-negative {
-      width: 6.5em;
-      margin-right: -.25em;
+    .card-body {
+      padding-top: $card-account-spacer * .9;
+    }
+    .flex-item {
+      padding: 0;
+      order: 3;
+    }
+    .name-bank,
+    .currency {
+      align-self: baseline;
+    }
+    .name-bank {
+      order: 1;
+      width: calc(100% - #{$currency-width * 1.2})
+    }
+    .type {
+      margin: .5em 0 0 -.25em;
+    }
+    .currency {
+      order: 2;
+      width: $currency-width;
     }
   }
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import './index.scss'
 import Layout from '../../components/Layout'
 import PageHeading from '../../components/PageHeading'
 import Section from '../../components/Section'
