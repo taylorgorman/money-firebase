@@ -20,7 +20,7 @@ export default function Competitors() {
               rootClose={ true }
               placement="right"
               overlay={
-                <Popover id={ dashed( heading.name ) }>
+                <Popover id={ dashed( heading.name ) } className="popover-competitor-description">
                   <Popover.Content>
                     { heading.description }
                   </Popover.Content>
