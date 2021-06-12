@@ -1,13 +1,19 @@
 import { Popover, OverlayTrigger, Row, Col, Form } from 'react-bootstrap'
 import { GearFill } from 'react-bootstrap-icons'
+
+import HeadingSubheading from '../ui/HeadingSubheading'
 import { dashed } from '../../utilities/formatString'
 
 import './styles.scss'
 
-export default function PageHeading({ children, settings }) {
+export default function PageHeading({ children, subheading, settings }) {
   return (
     <div className="page-heading">
-      <h1>{ children }</h1>
+      <HeadingSubheading
+        heading={ children }
+        subheading={ subheading }
+        Tag='h1'
+      />
       { settings && <PageSettings {...{ settings }} /> }
     </div>
   )
