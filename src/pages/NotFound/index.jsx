@@ -1,5 +1,5 @@
 import Layout from '../../components/Layout'
-import Section from '../../components/Section'
+import Section from '../../components/ui/Section'
 
 export default function NotFound() {
   return (

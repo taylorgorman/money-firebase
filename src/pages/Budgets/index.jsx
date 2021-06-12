@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout'
 import PageHeading from '../../components/PageHeading'
-import Section from '../../components/Section'
+import Section from '../../components/ui/Section'
 
 export default function Budgets() {
   return (

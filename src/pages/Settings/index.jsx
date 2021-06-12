@@ -3,7 +3,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 import './styles.scss'
 import Layout from '../../components/Layout'
-import Section from '../../components/Section'
+import Section from '../../components/ui/Section'
 import { Redirect, Route, Switch } from 'react-router'
 import Access from './Access'
 import Categories from './Categories'

@@ -1,5 +1,5 @@
 import Layout from '../../components/Layout'
-import Section from '../../components/Section'
+import Section from '../../components/ui/Section'
 import PageHeading from '../../components/PageHeading'
 
 export default function Dashboard() {

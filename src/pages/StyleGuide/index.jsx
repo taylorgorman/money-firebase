@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Button, Form, Col, Badge } from 'react-bootstrap'
 import Layout from '../../components/Layout'
-import Section from '../../components/Section'
+import Section from '../../components/ui/Section'
 
 import "./index.scss";
 
