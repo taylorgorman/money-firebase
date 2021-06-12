@@ -1,0 +1,10 @@
+@import '../../../styles/start.scss';
+
+.heading-subheading {
+  display: flex;
+  align-items: baseline;
+
+  .subheading {
+    margin: 0 0 0 $spacer * .5;
+  }
+}

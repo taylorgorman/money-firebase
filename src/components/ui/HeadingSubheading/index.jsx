@@ -1,3 +1,4 @@
+import './index.scss'
 
 export default function HeadingSubheading({
   heading,
@@ -5,9 +6,9 @@ export default function HeadingSubheading({
   Tag='h2'
 }) {
   return (
-    <div className="d-flex align-items-baseline">
+    <div className="heading-subheading">
       <Tag>{ heading }</Tag>
-      <p className="subheading m-0 ml-2"><em>{ subheading }</em></p>
+      <p className="subheading"><em>{ subheading }</em></p>
     </div>
   )
 }
