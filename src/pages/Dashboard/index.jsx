@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout'
 import Section from '../../components/ui/Section'
-import PageHeading from '../../components/PageHeading'
+import PageHeading from '../../components/ui/PageHeading'
 
 export default function Dashboard() {
   return (

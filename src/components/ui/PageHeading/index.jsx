@@ -1,8 +1,8 @@
 import { Popover, OverlayTrigger, Row, Col, Form } from 'react-bootstrap'
 import { GearFill } from 'react-bootstrap-icons'
 
-import HeadingSubheading from '../ui/HeadingSubheading'
-import { dashed } from '../../utilities/formatString'
+import HeadingSubheading from '../HeadingSubheading'
+import { dashed } from '../../../utilities/formatString'
 
 import './styles.scss'
 

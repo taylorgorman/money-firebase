@@ -1,5 +1,5 @@
 import Layout from '../../components/Layout'
-import PageHeading from '../../components/PageHeading'
+import PageHeading from '../../components/ui/PageHeading'
 import Section from '../../components/ui/Section'
 
 export default function Reports() {

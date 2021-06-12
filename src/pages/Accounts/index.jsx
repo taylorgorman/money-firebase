@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import './index.scss'
 import Layout from '../../components/Layout'
-import PageHeading from '../../components/PageHeading'
+import PageHeading from '../../components/ui/PageHeading'
 import Section from '../../components/ui/Section'
 import AccountsRows from './AccountsRows'
 import AccountsCards from './AccountsCards'

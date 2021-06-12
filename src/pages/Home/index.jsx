@@ -1,6 +1,6 @@
 import Competitors from '../../components/content/Competitors'
 import Layout from '../../components/Layout'
-import PageHeading from '../../components/PageHeading'
+import PageHeading from '../../components/ui/PageHeading'
 import Section from '../../components/ui/Section'
 import HeadingSubheading from '../../components/ui/HeadingSubheading'
 
