@@ -13,7 +13,7 @@ export default function Competitors() {
         <h3 className="card-title h6">{' '}</h3>
         <em className="card-description muted-text small"></em>
         { headings.map(( heading, key ) => (
-          <p key={ key } className={ heading.isSectionHeading && 'is-section-heading' }>
+          <p key={ key } className={ heading.isSectionHeading ? 'is-section-heading' : '' }>
           { heading.name }
           { heading.description && (
             <OverlayTrigger
@@ -42,7 +42,7 @@ export default function Competitors() {
             <h3 className="card-title h6">{ nameLinkedOrNot }</h3>
             <em className="card-description muted-text small">{ platform.description }</em>
             { headings.map(( heading, key ) => (
-              <p key={ key } className={ heading.isSectionHeading && 'is-section-heading' }>
+              <p key={ key } className={ heading.isSectionHeading ? 'is-section-heading' : '' }>
                 { platform[heading.dataKey] }
               </p>
             )) }
