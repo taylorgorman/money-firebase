@@ -1,76 +1,61 @@
 @import '../../styles/start.scss';
 
-table.competitors {
-  thead th {
-    text-transform: none;
-    vertical-align: top;
+.card-group.competitors {
+  $p-height: 2.1rem;
 
+  .card {
+    flex: initial;
+    flex-grow: 1;
+    border-left: solid 1px $gray-200;
+    text-align: center;
+
+    &:first-child,
+    &.sir-pigglesworth,
+    &.sir-pigglesworth + .card {
+      border-left: 0;
+    }
+    &.row-headings {
+      text-align: left;
+
+      .is-section-heading {
+        @extend %td;
+      }
+    }
     &.sir-pigglesworth {
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 100%;
-        left: -$table-border-width * 2;
-        height: 1em;
-        width: calc( 100% + #{ $table-border-width * 4 } );
-        background: $white;
-        border-radius: 10em 10em 0 0;
-        border: solid $table-border-color;
-        border-width: $table-border-width $table-border-width * 2 0 $table-border-width * 2;
-      }
+      border-radius: $border-radius-lg;
+    }
+    &:not(.sir-pigglesworth) {
+      background: none;
+      box-shadow: none;
     }
   }
-  tbody {
-    tr:not(.is-section-heading) {
-      th {
-        @extend %remove-th-styles;
-      }
-      th,
-      td {
-        border-top: 0;
-        padding-top: 0;
-      }
-    }
-    tr:last-child {
-      td.sir-pigglesworth {
-        position: relative;
-  
-        &::after {
-          content: '';
-          position: absolute;
-          top: 100%;
-          left: -$table-border-width * 2;
-          height: 1em;
-          width: calc( 100% + #{ $table-border-width * 4 } );
-          background: $white;
-          border-radius: 0 0 10em 10em;
-          border: solid $table-border-color;
-          border-width: 0 $table-border-width * 2 $table-border-width $table-border-width * 2;
-        }
-      }  
-    }
+  .card-body {
+    padding: 1.5em 1em;
   }
-  th,
-  td {
-    padding-top: $table-cell-padding * 1.5;
-    padding-bottom: $table-cell-padding * 1.5;
-    vertical-align: middle;
+  .card-title {
     white-space: nowrap;
-
-    &:not(:first-child) {
-      text-align: center;
-      border-left: solid $table-border-width * 2 $table-border-color;
-    }
-    &.sir-pigglesworth {
-      background-color: $white;
-    }
-    svg {
-      display: inline-block;
-      margin-left: .5em;
-      cursor: help;
-      margin-top: -.1em;
-    }
+    height: 1.7em;
+  }
+  .card-description {
+    line-height: 1;
+    display: block;
+    height: 2em;
+  }
+  .is-section-heading {
+    height: $p-height + 1.5;
+    padding-top: 1.5rem;
+    border-top: solid 1px $gray-200;
+    margin-top: 1rem;
+  }
+  .desc-icon {
+    display: inline-block;
+    margin-left: .5em;
+    cursor: help;
+    margin-top: -.1em;
+  }
+  p {
+    // border: solid 1px red;
+    margin: 0;
+    height: $p-height;
   }
 }
