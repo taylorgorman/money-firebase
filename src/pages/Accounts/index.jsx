@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import './index.scss'
 import Layout from '../../components/Layout'
@@ -7,12 +7,24 @@ import Section from '../../components/ui/Section'
 import AccountsRows from './AccountsRows'
 import AccountsCards from './AccountsCards'
 import AccountsTable from './AccountsTable'
+import { useData } from '../../utilities/DataContext'
 
 export default function Accounts() {
 
-  const [ layout, setLayout ] = useState( 'Rows' )
-  const [ sortBy, setSortBy ] = useState( 'Amount' )
-  const [ showNetWorth, setShowNetWorth ] = useState( true )
+  const { settings, updateSetting } = useData()
+  const [ layout, setLayout ] = useState( settings['accounts-layout'] || 'Rows' )
+  const [ sortBy, setSortBy ] = useState( settings['accounts-sortBy'] || 'Amount' )
+  const [ showNetWorth, setShowNetWorth ] = useState( settings['accounts-showNetWorth'] || true )
+
+  useEffect(() => {
+    updateSetting( { value: layout }, 'accounts-layout' )
+  }, [layout])
+  useEffect(() => {
+    updateSetting( { value: sortBy }, 'accounts-sortBy' )
+  }, [sortBy])
+  useEffect(() => {
+    updateSetting( { value: showNetWorth }, 'accounts-showNetWorth' )
+  }, [showNetWorth])
 
   return (
     <Layout>
@@ -59,4 +71,5 @@ export default function Accounts() {
     </Section>
     </Layout>
   )
+
 }

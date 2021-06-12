@@ -1,16 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import reportWebVitals from './reportWebVitals'
+import { BrowserRouter } from 'react-router-dom'
 
 import './index.scss'
 import Routes from './Routes'
-import { BrowserRouter } from 'react-router-dom'
 import { FirebaseProvider } from './utilities/FirebaseContext'
+import { DataProvider } from './utilities/DataContext'
+import reportWebVitals from './reportWebVitals'
 
 const ReactApp = () => (
   <BrowserRouter>
     <FirebaseProvider>
-      <Routes />
+      <DataProvider>
+        <Routes />
+      </DataProvider>
     </FirebaseProvider>
   </BrowserRouter>
 )

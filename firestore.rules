@@ -22,5 +22,11 @@ service cloud.firestore {
       allow read, update, delete: if isSignedIn() && userOwnsDocument();
     }
 
+    // Settings
+    match /settings/{document=**} {
+      allow create: if isSignedIn();
+      allow read, update, delete: if isSignedIn() && userOwnsDocument();
+    }
+
   }
 }

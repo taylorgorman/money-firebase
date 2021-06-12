@@ -16,9 +16,11 @@ import StyleGuide from './pages/StyleGuide'
 import Transactions from './pages/Transactions'
 import PrivateRoute from './utilities/PrivateRoute'
 import { useFirebase } from './utilities/FirebaseContext'
+import { useData } from './utilities/DataContext'
 
 export default function Routes() {
   const { user, userLoading } = useFirebase()
+  const { settingsLoading } = useData()
 
   // Show loading while checking for user
   if ( userLoading )
@@ -27,23 +29,25 @@ export default function Routes() {
   // Routes
   else
     return ( <>
-        <AppHeader />
-        <AppNav />
-        <Switch>
-          <Route exact path="/" component={ user ? Dashboard : Home } />
-          <Route path="/signin" component={ SignIn } />
-          <Redirect path="/login" to="/signin" />
-          <PrivateRoute path="/transactions" component={ Transactions } />
-          <PrivateRoute path="/budgets" component={ Budgets } />
-          <PrivateRoute path="/reports" component={ Reports } />
-          <PrivateRoute path="/accounts" component={ Accounts } />
-          <PrivateRoute path="/profile" component={ Profile } />
-          <PrivateRoute path="/settings" component={ Settings } />
-          <Redirect path="/access" to="/settings/access" />
-          <Redirect path="/categories" to="/settings/categories" />
-          <Redirect path="/labels" to="/settings/labels" />
-          <PrivateRoute path="/style-guide" component={ StyleGuide } />
-          <Route component={ NotFound } />
-        </Switch>
+      <AppHeader />
+      <AppNav />
+      <Switch>
+        <Route exact path="/" component={ user ? Dashboard : Home } />
+        <Route path="/signin" component={ SignIn } />
+        <Redirect path="/login" to="/signin" />
+        <Redirect path="/access" to="/settings/access" />
+        <Redirect path="/categories" to="/settings/categories" />
+        <Redirect path="/labels" to="/settings/labels" />
+        { ! settingsLoading && ( <>
+            <PrivateRoute path="/transactions" component={ Transactions } />
+            <PrivateRoute path="/budgets" component={ Budgets } />
+            <PrivateRoute path="/reports" component={ Reports } />
+            <PrivateRoute path="/accounts" component={ Accounts } />
+            <PrivateRoute path="/profile" component={ Profile } />
+            <PrivateRoute path="/settings" component={ Settings } />
+            <PrivateRoute path="/style-guide" component={ StyleGuide } />
+        </> ) }
+        <Route component={ NotFound } />
+      </Switch>
     </> )
 }
