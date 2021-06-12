@@ -6,33 +6,33 @@ import { useFirebase } from '../../utilities/FirebaseContext'
 
 export default function Messages() {
   const { firebase, auth, firestore } = useFirebase()
-  const [user] = useAuthState(auth);
-  const messagesCollection = firestore.collection("messages");
+  const [user] = useAuthState(auth)
+  const messagesCollection = firestore.collection("messages")
   const query = messagesCollection
     .where("uid", "==", user?.uid || null)
-    .orderBy("createdAt", "desc");
+    .orderBy("createdAt", "desc")
   const [messages, loading, error] = useCollectionData(query, {
     idField: "id",
-  });
+  })
 
-  const [newMessage, setNewMessage] = useState("");
+  const [newMessage, setNewMessage] = useState("")
   async function createMessage(event) {
-    event.preventDefault();
+    event.preventDefault()
     if (!user) {
-      console.warning("DATABASE WRITE FAILED, user not authenticated");
+      console.warning("DATABASE WRITE FAILED, user not authenticated")
     }
     else {
       await messagesCollection.add({
         uid: user.uid,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         text: newMessage,
-      });
-      setNewMessage("");
+      })
+      setNewMessage("")
     }
   }
 
   if (!user) {
-    return <p>Sign in to see your messages.</p>;
+    return <p>Sign in to see your messages.</p>
   }
   else {
     return (
@@ -72,7 +72,7 @@ export default function Messages() {
           <p>Aw nuts, there are none.</p>
         )}
       </section>
-    );
+    )
   }
   
 }
