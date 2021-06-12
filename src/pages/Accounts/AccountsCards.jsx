@@ -2,7 +2,7 @@ import { Badge, Card, Col, Row } from 'react-bootstrap'
 
 import './AccountsCards.scss'
 import data from './data.json'
-import Currency from '../../components/Currency'
+import Currency from '../../components/ui/Currency'
 import AreaChart from '../../components/AreaChart'
 
 export default function AccountsCards({ showNetWorth }) {

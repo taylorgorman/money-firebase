@@ -1,5 +1,5 @@
 import data from './data.json'
-import Currency from '../../components/Currency'
+import Currency from '../../components/ui/Currency'
 import { Badge, Table } from 'react-bootstrap'
 
 export default function AccountsTable({ showNetWorth }) {
