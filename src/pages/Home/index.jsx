@@ -1,4 +1,4 @@
-import Competitors from '../../components/Competitors'
+import Competitors from '../../components/content/Competitors'
 import Layout from '../../components/Layout'
 import PageHeading from '../../components/PageHeading'
 import Section from '../../components/Section'

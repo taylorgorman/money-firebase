@@ -2,7 +2,7 @@ import { Card, CardGroup, OverlayTrigger, Popover } from 'react-bootstrap'
 
 import './styles.scss'
 import { headings, platforms } from './data'
-import { dashed } from '../../utilities/formatString'
+import { dashed } from '../../../utilities/formatString'
 import { QuestionCircleFill } from 'react-bootstrap-icons'
 
 export default function Competitors() {
