@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "extends": [
     "plugin:react/recommended",
@@ -29,6 +30,7 @@
     // React
     "react/react-in-jsx-scope": "off",
     // Other
-    "semi": ["error", "never"]
+    "semi": ["error", "never"],
+    "import/prefer-default-export": "off"
   }
 }
