@@ -1,9 +1,11 @@
 import React from 'react'
-import { Table, Button, Form, Col, Badge } from 'react-bootstrap'
+import {
+  Table, Button, Form, Col, Badge,
+} from 'react-bootstrap'
 import Layout from '../../components/Layout'
 import Section from '../../components/ui/Section'
 
-import "./index.scss";
+import './index.scss'
 
 export default function StyleGuide() {
   return (
@@ -15,47 +17,62 @@ export default function StyleGuide() {
         <h2>Colors</h2>
 
         <p className="color-blocks">
-          {[
-            "white",
-            "gray-100",
-            "gray-200",
-            "gray-300",
-            "gray-400",
-            "gray-500",
-            "gray-600",
-            "gray-700",
-            "gray-800",
-            "gray-900",
-            "black",
-            "primary",
-            "secondary",
-            "success",
-            "info",
-            "warning",
-            "danger",
-            "light",
-            "dark",
-          ].map((color) => (
-            <span className="color" key={color}>
-              <span className={"color-block bg-" + color} />
-              <span className="color-details">{color}</span>
+          { [
+            'white',
+            'gray-100',
+            'gray-200',
+            'gray-300',
+            'gray-400',
+            'gray-500',
+            'gray-600',
+            'gray-700',
+            'gray-800',
+            'gray-900',
+            'black',
+            'primary',
+            'secondary',
+            'success',
+            'info',
+            'warning',
+            'danger',
+            'light',
+            'dark',
+          ].map( ( color ) => (
+            <span className="color" key={ color }>
+              <span className={ `color-block bg-${color}` } />
+              <span className="color-details">{ color }</span>
             </span>
-          ))}
+          ) ) }
         </p>
 
         <h2>Typography</h2>
 
         <p>
-          Lorem ipsum dolor sit amet, <em>consectetur adipiscing</em> elit.
-          Mauris id arcu in lectus tempus semper.{" "}
-          <strong>Nullam ut odio pellentesque,</strong> ultricies ligula nec,
-          luctus dui. <a href="/">Maecenas vel enim</a> eu neque porta maximus
+          Lorem ipsum dolor sit amet,
+          { ' ' }
+          <em>consectetur adipiscing</em>
+          { ' ' }
+          elit.
+          Mauris id arcu in lectus tempus semper.
+          { ' ' }
+          <strong>Nullam ut odio pellentesque,</strong>
+          { ' ' }
+          ultricies ligula nec,
+          luctus dui.
+          <a href="/">Maecenas vel enim</a>
+          { ' ' }
+          eu neque porta maximus
           sit amet nec augue.
         </p>
-        {[1, 2, 3, 4, 5, 6].map((i) => {
-          const Tag = "h" + i;
-          return <Tag key={i}>Heading {i}</Tag>;
-        })}
+        { [1, 2, 3, 4, 5, 6].map( ( i ) => {
+          const Tag = `h${i}`
+          return (
+            <Tag key={ i }>
+              Heading
+              { i }
+            </Tag>
+          )
+        } ) }
         <ul>
           <li>Praesent sed mollis lorem</li>
           <li>Phasellus eleifend rutrum mi ut tempus</li>
@@ -102,7 +119,7 @@ export default function StyleGuide() {
 
         <h2>Buttons</h2>
         <p className="buttons">
-          {[
+          { [
             'Primary',
             'Secondary',
             'Success',
@@ -111,15 +128,15 @@ export default function StyleGuide() {
             'Info',
             'Light',
             'Dark',
-            'Link'
-          ].map(( variant ) => (
+            'Link',
+          ].map( ( variant ) => (
             <Button variant={ variant.toLowerCase() }>{ variant }</Button>
-          ))}
+          ) ) }
         </p>
 
         <h2>Badges</h2>
         <p className="badges">
-          {[
+          { [
             'Primary',
             'Secondary',
             'Success',
@@ -128,20 +145,20 @@ export default function StyleGuide() {
             'Info',
             'Light',
             'Dark',
-          ].map(( variant ) => (
+          ].map( ( variant ) => (
             <Badge variant={ variant.toLowerCase() }>{ variant }</Badge>
-          ))}
+          ) ) }
         </p>
 
         <h2>Forms</h2>
         <Form>
           <Form.Row>
-            <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Group as={ Col } controlId="formGridEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" placeholder="Enter email" />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Group as={ Col } controlId="formGridPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder="Password" />
             </Form.Group>
@@ -158,12 +175,12 @@ export default function StyleGuide() {
           </Form.Group>
 
           <Form.Row>
-            <Form.Group as={Col} controlId="formGridCity">
+            <Form.Group as={ Col } controlId="formGridCity">
               <Form.Label>City</Form.Label>
               <Form.Control />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridState">
+            <Form.Group as={ Col } controlId="formGridState">
               <Form.Label>State</Form.Label>
               <Form.Control as="select">
                 <option>Choose...</option>
@@ -171,7 +188,7 @@ export default function StyleGuide() {
               </Form.Control>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridZip">
+            <Form.Group as={ Col } controlId="formGridZip">
               <Form.Label>Zip</Form.Label>
               <Form.Control />
             </Form.Group>

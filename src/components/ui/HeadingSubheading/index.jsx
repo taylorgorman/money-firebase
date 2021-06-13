@@ -1,10 +1,10 @@
 import './index.scss'
 
-export default function HeadingSubheading({
+export default function HeadingSubheading( {
   heading,
   subheading,
-  Tag='h2'
-}) {
+  Tag = 'h2',
+} ) {
   return (
     <div className="heading-subheading">
       <Tag>{ heading }</Tag>

@@ -1,21 +1,24 @@
-import { ClipboardData, ListCheck, PieChart, PiggyBank, Speedometer2 } from 'react-bootstrap-icons'
+import {
+  ClipboardData, ListCheck, PieChart, PiggyBank, Speedometer2,
+} from 'react-bootstrap-icons'
 import { NavLink } from 'react-router-dom'
 import { useFirebase } from '../../utilities/FirebaseContext'
 
 import './styles.scss'
 
 export default function AppNav() {
-
   const { user } = useFirebase()
 
-  const AppNavLink = ({ to, Icon, text }) => (
-    <NavLink exact to={ to }><span className="inner">
-      <Icon />
-      <span className="d-none d-md-inline">{ text }</span>
-    </span></NavLink>
+  const AppNavLink = ( { to, Icon, text } ) => (
+    <NavLink exact to={ to }>
+      <span className="inner">
+        <Icon />
+        <span className="d-none d-md-inline">{ text }</span>
+      </span>
+    </NavLink>
   )
 
-  if ( user )
+  if ( user ) {
     return (
       <nav className="app-nav">
         <AppNavLink to="/" text="Dashboard" Icon={ Speedometer2 } />
@@ -26,8 +29,8 @@ export default function AppNav() {
         <AppNavLink to="/accounts" text="Accounts" Icon={ PiggyBank } />
       </nav>
     )
-  else
-    return (
-      <></>
-    )
+  }
+  return (
+    <></>
+  )
 }
