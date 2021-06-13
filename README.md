@@ -31,17 +31,19 @@
 - [Truebill](https://www.truebill.com)
 
 ## To Do
-- [ ] Dark mode
-- [ ] After signin, redirect to original landing page
-- [ ] Add functionality from master-pigglesworth
-- [ ] Rename from money-firebase to sir-pigglesworth
-- [ ] Migrate to Vercel for hosting and serverless functions
-- [ ] Change favicon
-- [ ] Write firestore rules such that users can only see their own data
-- [ ] Start throwing up some functionality! No real styles yet, just make it work.
+- [ ] When update setting, if setting doesn't exist, create it. Currently getting Firebase error bc user can't update documents they don't own and when user is created, setting doesn't exist for them.
 - [ ] Write function to populate database on start
-- [x] Add functionality from fire-calculator
+- [ ] Create transactions (this is the whole thing I need rn to get data in)
+- [ ] Update transactions
+- [ ] Change favicon
+- [ ] Dark mode
+- [ ] Rename from money-firebase to sir-pigglesworth in Firebase and Github
+- [ ] Migrate to Vercel for hosting and serverless functions
 - [x] Get functions working in emulator - `yarn`
+- [x] After signin, redirect to original landing page
+- [x] Add functionality from fire-calculator
+- [x] Add functionality from master-pigglesworth
+- [x] Write firestore rules such that users can only see their own data
 
 ## Resources
 1. _Super_ helpful video on using Firebase in React: https://www.youtube.com/watch?v=zQyrwxMPm88
