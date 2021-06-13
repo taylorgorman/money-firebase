@@ -1,16 +1,18 @@
-import { Badge, Card, Col, Row } from 'react-bootstrap'
+import {
+  Badge, Card, Col, Row,
+} from 'react-bootstrap'
 
 import './AccountsCards.scss'
 import data from './data.json'
 import Currency from '../../components/ui/Currency'
 import AreaChart from '../../components/AreaChart'
 
-export default function AccountsCards({ showNetWorth }) {
+export default function AccountsCards( { showNetWorth } ) {
   return (
     <div className="accounts-cards">
       <Row className="row">
-        { data.map(( account, key ) => (
-          <Col md={ 6 } xl={ 4 } key={ key }>
+        { data.map( ( account ) => (
+          <Col md={ 6 } xl={ 4 } key={ account.name }>
             <Card body className="card-account account-card">
               <div>
                 <Badge className="type" variant="light">{ account.type }</Badge>
@@ -23,7 +25,7 @@ export default function AccountsCards({ showNetWorth }) {
               </div>
             </Card>
           </Col>
-        )) }
+        ) ) }
       </Row>
       { showNetWorth && (
         <div className="total">

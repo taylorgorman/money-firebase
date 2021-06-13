@@ -23,12 +23,11 @@ export default function Routes() {
   const { settingsLoading } = useData()
 
   // Show loading while checking for user
-  if ( userLoading )
-    return <div className="center-center"><Spinner animation="border" /></div>
-  
+  if ( userLoading ) return <div className="center-center"><Spinner animation="border" /></div>
+
   // Routes
-  else
-    return ( <>
+  return (
+    <>
       <AppHeader />
       <AppNav />
       <Switch>
@@ -38,16 +37,19 @@ export default function Routes() {
         <Redirect path="/access" to="/settings/access" />
         <Redirect path="/categories" to="/settings/categories" />
         <Redirect path="/labels" to="/settings/labels" />
-        { ! settingsLoading && ( <>
-            <PrivateRoute path="/transactions" component={ Transactions } />
-            <PrivateRoute path="/budgets" component={ Budgets } />
-            <PrivateRoute path="/reports" component={ Reports } />
-            <PrivateRoute path="/accounts" component={ Accounts } />
-            <PrivateRoute path="/profile" component={ Profile } />
-            <PrivateRoute path="/settings" component={ Settings } />
-            <PrivateRoute path="/style-guide" component={ StyleGuide } />
-        </> ) }
+        { ! settingsLoading && (
+        <>
+          <PrivateRoute path="/transactions" component={ Transactions } />
+          <PrivateRoute path="/budgets" component={ Budgets } />
+          <PrivateRoute path="/reports" component={ Reports } />
+          <PrivateRoute path="/accounts" component={ Accounts } />
+          <PrivateRoute path="/profile" component={ Profile } />
+          <PrivateRoute path="/settings" component={ Settings } />
+          <PrivateRoute path="/style-guide" component={ StyleGuide } />
+        </>
+        ) }
         <Route component={ NotFound } />
       </Switch>
-    </> )
+    </>
+  )
 }

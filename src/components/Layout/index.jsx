@@ -1,7 +1,6 @@
-
-export default function Layout({ children, page }) {
+export default function Layout( { children, page } ) {
   return (
-    <main className={ !! page ? `page-${page}` : '' }>
+    <main className={ page ? `page-${page}` : '' }>
       { children }
     </main>
   )
