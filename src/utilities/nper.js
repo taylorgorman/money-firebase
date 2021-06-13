@@ -1,9 +1,6 @@
 export default function nper( ir, pmt, pv, fv ) {
-  let nbperiods
-
-  if ( ir !== 0 ) ir /= 100
-
-  nbperiods = Math.log( ( - fv * ir + pmt ) / ( pmt + ir * pv ) ) / Math.log( 1 + ir )
-
+  const irNew = ( ir !== 0 ) ? ir / 100 : ir
+  const nbperiods = Math.log( ( - fv * irNew + pmt ) / ( pmt + irNew * pv ) )
+    / Math.log( 1 + irNew )
   return nbperiods
 }

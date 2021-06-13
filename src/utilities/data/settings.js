@@ -10,10 +10,10 @@ export function retrieveSettings() {
   const [data, loading, error] = collectionData( query, { idField: 'id' } )
 
   // Convert Firebase data to simple object
-  const settings = data?.reduce( ( object, setting ) => {
-    object[setting.id] = setting.value
-    return object
-  }, {} )
+  const settings = data?.reduce( ( object, setting ) => ( {
+    [setting.id]: setting.value,
+    ...object,
+  } ), {} )
 
   // Return
   return [settings, loading, error]
@@ -27,7 +27,7 @@ export async function updateSetting( FB, docData, docId ) {
     updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
     ...docData,
   }
-  docId
-    ? await settingsCollection.doc( docId ).set( data )
-    : await settingsCollection.add( data )
+  return await docId
+    ? settingsCollection.doc( docId ).set( data )
+    : settingsCollection.add( data )
 }
