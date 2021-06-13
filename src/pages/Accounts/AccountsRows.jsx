@@ -8,8 +8,8 @@ import AreaChart from '../../components/AreaChart'
 export default function AccountsRows( { showNetWorth } ) {
   return (
     <div className="accounts-rows">
-      { data.map( ( account, key ) => (
-        <Card body className="card-account account-row" key={ key }>
+      { data.map( ( account ) => (
+        <Card body className="card-account account-row" key={ account.name }>
           <span className="flex-item name-bank">
             { account.name }
             <span className="bank">{ account.bank }</span>

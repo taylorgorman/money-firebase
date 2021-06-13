@@ -14,8 +14,8 @@ export default function AccountsTable( { showNetWorth } ) {
         </tr>
       </thead>
       <tbody>
-        { data.map( ( account, key ) => (
-          <tr key={ key }>
+        { data.map( ( account ) => (
+          <tr key={ account.name }>
             <td className="name">{ account.name }</td>
             <td className="bank">{ account.bank }</td>
             <td className="type"><Badge variant="light">{ account.type }</Badge></td>
@@ -28,9 +28,9 @@ export default function AccountsTable( { showNetWorth } ) {
       { showNetWorth && (
       <tfoot>
         <tr>
-          <th />
-          <th />
-          <th />
+          <th aria-label="no content" />
+          <th aria-label="no content" />
+          <th aria-label="no content" />
           <th>
             <Currency amount={ data.reduce( ( total, account ) => total + account.balance, 0 ) } />
           </th>

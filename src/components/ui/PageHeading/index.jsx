@@ -35,7 +35,9 @@ function PageSettings( { settings } ) {
         </Popover>
       ) }
     >
-      <button className="page-heading-settings-trigger"><GearFill /></button>
+      <button type="button" aria-label="Settings" className="page-heading-settings-trigger">
+        <GearFill />
+      </button>
     </OverlayTrigger>
   )
 }
@@ -43,8 +45,8 @@ function PageSettings( { settings } ) {
 function PageSettingsContent( { settings } ) {
   return (
     <Row className="settings-row">
-      { settings.map( ( setting, key ) => (
-        <Col md className="setting" key={ key }>
+      { settings.map( ( setting ) => (
+        <Col md className="setting" key={ setting.label }>
           <h5 className="setting-title small-caps">{ setting.label }</h5>
           <div className="setting-options">
             { setting.options.map( ( optionLabel, key ) => {

@@ -61,9 +61,9 @@ export function FirebaseProvider( { children } ) {
 
   // redirect to appropriate paths at appropriate times
   useEffect( () => {
-    const unsubscribe = auth.onAuthStateChanged( ( user ) => {
+    const unsubscribe = auth.onAuthStateChanged( ( haveUser ) => {
       // if just signed in
-      if ( user && history.location.pathname === '/signin' ) {
+      if ( haveUser && history.location.pathname === '/signin' ) {
         const urlParams = new URLSearchParams( history.location.search )
         // redirect to originally requested path or root
         history.push( urlParams.get( 'redirectto' ) || '/' )

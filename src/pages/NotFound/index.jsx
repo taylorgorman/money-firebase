@@ -6,7 +6,7 @@ export default function NotFound() {
     <Layout>
       <Section>
         <h1>Welp nope</h1>
-        <p>That page doesn't exist.</p>
+        <p>That page doesn&rsquo;t exist.</p>
       </Section>
     </Layout>
   )

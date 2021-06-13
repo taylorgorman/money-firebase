@@ -1,4 +1,4 @@
-import { Redirect, Route, useHistory } from 'react-router'
+import { Redirect, Route, useHistory } from 'react-router-dom'
 
 import { useFirebase } from './FirebaseContext'
 

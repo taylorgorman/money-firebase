@@ -4,7 +4,7 @@ import NumberFormat from 'react-number-format'
 
 import './index.scss'
 
-export default function InputGroupAccounting( props ) {
+export default function InputGroupAccounting( { value, onValueChange } ) {
   return (
     <InputGroup className="accounting">
       <InputGroup.Prepend>
@@ -13,10 +13,10 @@ export default function InputGroupAccounting( props ) {
       <NumberFormat
         customInput={ Form.Control }
         thousandSeparator
-        value={ props.value }
+        value={ value }
         decimalScale={ 0 }
         onValueChange={ ( values ) => {
-          props.onValueChange( values.value )
+          onValueChange( values.value )
         } }
       />
     </InputGroup>

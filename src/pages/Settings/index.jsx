@@ -2,9 +2,9 @@ import {
   Col, Container, ListGroup, Row,
 } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
 import './styles.scss'
-import { Redirect, Route, Switch } from 'react-router'
 import Layout from '../../components/Layout'
 import Section from '../../components/ui/Section'
 import Access from './Access'

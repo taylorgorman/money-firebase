@@ -11,8 +11,8 @@ export default function AccountsCards( { showNetWorth } ) {
   return (
     <div className="accounts-cards">
       <Row className="row">
-        { data.map( ( account, key ) => (
-          <Col md={ 6 } xl={ 4 } key={ key }>
+        { data.map( ( account ) => (
+          <Col md={ 6 } xl={ 4 } key={ account.name }>
             <Card body className="card-account account-card">
               <div>
                 <Badge className="type" variant="light">{ account.type }</Badge>

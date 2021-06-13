@@ -18,16 +18,12 @@ export default function Messages() {
   const [newMessage, setNewMessage] = useState( '' )
   async function createMessage( event ) {
     event.preventDefault()
-    if ( ! user ) {
-      console.warning( 'DATABASE WRITE FAILED, user not authenticated' )
-    } else {
-      await messagesCollection.add( {
-        uid: user.uid,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        text: newMessage,
-      } )
-      setNewMessage( '' )
-    }
+    await messagesCollection.add( {
+      uid: user.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      text: newMessage,
+    } )
+    setNewMessage( '' )
   }
 
   if ( ! user ) {

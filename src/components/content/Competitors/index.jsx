@@ -13,8 +13,8 @@ export default function Competitors() {
       <Card body className="row-headings">
         <h3 className="card-title h6">{ ' ' }</h3>
         <em className="card-description muted-text small" />
-        { headings.map( ( heading, key ) => (
-          <p key={ key } className={ heading.isSectionHeading ? 'is-section-heading' : '' }>
+        { headings.map( ( heading ) => (
+          <p key={ heading.dataKey } className={ heading.isSectionHeading ? 'is-section-heading' : '' }>
             { heading.name }
             { heading.description && (
             <OverlayTrigger
@@ -34,16 +34,16 @@ export default function Competitors() {
           </p>
         ) ) }
       </Card>
-      { platforms.map( ( platform, key ) => {
+      { platforms.map( ( platform ) => {
         const nameLinkedOrNot = platform.url
           ? <a href={ platform.url } target="_blank" rel="noreferrer">{ platform.name }</a>
           : platform.name
         return (
-          <Card body key={ key } className={ dashed( platform.name ) }>
+          <Card body key={ platform.name } className={ dashed( platform.name ) }>
             <h3 className="card-title h6">{ nameLinkedOrNot }</h3>
             <em className="card-description muted-text small">{ platform.description }</em>
-            { headings.map( ( heading, key ) => (
-              <p key={ key } className={ heading.isSectionHeading ? 'is-section-heading' : '' }>
+            { headings.map( ( heading ) => (
+              <p key={ heading.dataKey } className={ heading.isSectionHeading ? 'is-section-heading' : '' }>
                 { platform[heading.dataKey] }
               </p>
             ) ) }

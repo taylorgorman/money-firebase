@@ -7,6 +7,7 @@ import PageHeading from '../../components/ui/PageHeading'
 export default function Transactions() {
   const data = [
     {
+      id: '897tyghu897',
       date: 'May 24',
       merchant: 'PayPal - Preemptive Love',
       category: 'Giving / Donations',
@@ -15,6 +16,7 @@ export default function Transactions() {
       account: 'Regular Expenses',
     },
     {
+      id: '78yughjkio90',
       date: 'May 24',
       merchant: 'Coinbase',
       category: 'Investments ..or Gambling',
@@ -44,8 +46,8 @@ export default function Transactions() {
             </tr>
           </thead>
           <tbody>
-            { data.map( ( transaction, key ) => (
-              <tr key={ key }>
+            { data.map( ( transaction ) => (
+              <tr key={ transaction.id }>
                 <td>
                   { transaction.merchant }
                   <span className="line2">

@@ -49,20 +49,18 @@ function Avatar( { className } ) {
       rootClose
       trigger="click"
       placement="right-end"
-      overlay={ profileLinks }
+      overlay={ (
+        <Popover id="profile-links">
+          <Popover.Content>
+            <ProfileLinksList />
+          </Popover.Content>
+        </Popover>
+      ) }
     >
       <Image className={ className } src="https://placekitten.com/50/50" roundedCircle />
     </OverlayTrigger>
   )
 }
-
-const profileLinks = (
-  <Popover id="profile-links">
-    <Popover.Content>
-      <ProfileLinksList />
-    </Popover.Content>
-  </Popover>
-)
 
 function ProfileLinksList() {
   const { signOut } = useFirebase()
