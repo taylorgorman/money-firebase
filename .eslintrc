@@ -15,7 +15,14 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": [
+    "react"
+  ],
+  "overrides": [
+    {
+      "files": ["*.jsx", "*.js"]
+    }
+  ],
   "rules": {
     // Spacing
     "object-curly-spacing": ["error", "always"],
@@ -29,6 +36,7 @@
     }],
     // React
     "react/react-in-jsx-scope": "off",
+    "react/prop-types": "warn",
     // Other
     "semi": ["error", "never"],
     "import/prefer-default-export": "off"
