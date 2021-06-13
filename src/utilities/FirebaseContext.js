@@ -7,8 +7,7 @@ import { useHistory } from 'react-router-dom'
 
 const FirebaseContext = createContext()
 
-export function FirebaseProvider({ children }) {
-
+export function FirebaseProvider( { children } ) {
   const history = useHistory()
 
   // global utilities
@@ -17,7 +16,7 @@ export function FirebaseProvider({ children }) {
 
   // initialize firebase
   if ( ! isFirebaseInitialized ) {
-    firebase.initializeApp({
+    firebase.initializeApp( {
       apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
       authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
       projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
@@ -25,7 +24,7 @@ export function FirebaseProvider({ children }) {
       messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
       appId: process.env.REACT_APP_FIREBASE_APP_ID,
       measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
-    })
+    } )
   }
 
   // global firebase tools
@@ -39,12 +38,12 @@ export function FirebaseProvider({ children }) {
   }
 
   // auth
-  const [ user, loading, error ] = useAuthState( auth )
+  const [user, loading, error] = useAuthState( auth )
   const userLoading = loading
   const userError = error
   const signOut = () => {
     auth.signOut()
-    history.push('/')
+    history.push( '/' )
   }
 
   function signInWithGoogle() {
@@ -61,35 +60,37 @@ export function FirebaseProvider({ children }) {
   }
 
   // redirect to appropriate paths at appropriate times
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(( user ) => {
+  useEffect( () => {
+    const unsubscribe = auth.onAuthStateChanged( ( user ) => {
       // if just signed in
       if ( user && history.location.pathname === '/signin' ) {
         const urlParams = new URLSearchParams( history.location.search )
         // redirect to originally requested path or root
         history.push( urlParams.get( 'redirectto' ) || '/' )
       }
-    })
-    return () => unsubscribe();
-  })
-  
-  // context provider
-  return <FirebaseContext.Provider value={{
-    firebase,
-    auth,
-    user,
-    userLoading,
-    userError,
-    signOut,
-    firestore,
-    signInWithGoogle,
-    signInWithFacebook,
-    signInWithTwitter,
-  }}>
-    { children }
-  </FirebaseContext.Provider>
+    } )
+    return () => unsubscribe()
+  } )
 
-} 
+  // context provider
+  return (
+    <FirebaseContext.Provider value={ {
+      firebase,
+      auth,
+      user,
+      userLoading,
+      userError,
+      signOut,
+      firestore,
+      signInWithGoogle,
+      signInWithFacebook,
+      signInWithTwitter,
+    } }
+    >
+      { children }
+    </FirebaseContext.Provider>
+  )
+}
 
 // context consumer
 export const useFirebase = () => useContext( FirebaseContext )

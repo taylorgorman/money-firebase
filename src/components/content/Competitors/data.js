@@ -1,4 +1,3 @@
-
 export const headings = [
   // {
   //   name: <p className="m-0" style={{ lineHeight: '1.7' }}>
