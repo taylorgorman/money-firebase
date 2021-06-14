@@ -3,27 +3,33 @@
 //
 $gray-hue: 237;
 $gray-saturation: 8;
-$gray-100: hsl($gray-hue, $gray-saturation, 95);
-$gray-200: hsl($gray-hue, $gray-saturation, 89);
-$gray-300: hsl($gray-hue, $gray-saturation, 78);
-$gray-400: hsl($gray-hue, $gray-saturation, 69);
-$gray-500: hsl($gray-hue, $gray-saturation, 60);
-$gray-600: hsl($gray-hue, $gray-saturation, 51);
-$gray-700: hsl($gray-hue, $gray-saturation, 43);
-$gray-800: hsl($gray-hue, $gray-saturation, 33);
-$gray-900: hsl($gray-hue, $gray-saturation, 24);
-$black: hsl($gray-hue, $gray-saturation, 15);
-$white: #ffffff;
+$white: hsl($gray-hue, $gray-saturation, 100);
+$gray-100: hsl($gray-hue, $gray-saturation, 93);
+$gray-150: hsl($gray-hue, $gray-saturation, 89);
+$gray-200: hsl($gray-hue, $gray-saturation, 84);
+$gray-300: hsl($gray-hue, $gray-saturation, 75);
+$gray-400: hsl($gray-hue, $gray-saturation, 66);
+$gray-500: hsl($gray-hue, $gray-saturation, 57);
+$gray-600: hsl($gray-hue, $gray-saturation, 48);
+$gray-700: hsl($gray-hue, $gray-saturation, 39);
+$gray-800: hsl($gray-hue, $gray-saturation, 30);
+$gray-900: hsl($gray-hue, $gray-saturation, 21);
+$black: hsl($gray-hue, $gray-saturation, 12);
 
-$forest: hsl(180, 90, 20);
+$grays: (
+  "150": $gray-150,
+);
+
+$forest: hsl(177, 90, 20);
 $yellow: hsl(45, 78, 73);
-$green: hsl(132, 40, 54);
-$coral: #D96055;
+$green: hsl(132, 45, 45);
+$coral: hsl(5, 63, 59);
 $blue: hsl(190, 50, 53);
+$cyan: hsl(188, 100, 80);
 $maroon-dark: hsl(316, 54, 16);
 
 $primary: $forest;
-$secondary: #99F9FF;
+$secondary: $cyan;
 $info: $blue;
 $success: $green;
 $warning: $yellow;
@@ -48,7 +54,7 @@ $enable-shadows: true;
 // Body
 //
 $body-bg: var(--gray-100);
-$body-color: var(--gray-700);
+$body-color: var(--gray-900);
 
 // App UI
 $app-ui-breakpoint: 800px;
@@ -79,13 +85,13 @@ $border-radius: .25em;
 $border-radius-lg: .5em;
 $border-radius-sm: .125em;
 $component-active-bg: $primary;
-$box-shadow-sm: 0 .1em .5rem rgba($gray-800, .2);
-$box-shadow: 0 .2em 1rem rgba($gray-800, .2);
-$box-shadow-lg: 0 .3em 2rem rgba($gray-800, .2);
+$box-shadow-sm: 0 .1em .5rem rgba(black, .1);
+$box-shadow: 0 .2em 1rem rgba(black, .1);
+$box-shadow-lg: 0 .3em 2rem rgba(black, .1);
 
 // Links
 //
-$link-color: var(--forest);
+$link-color: var(--primary);
 $link-hover-color: $link-color;
 $link-hover-decoration: none;
 
@@ -105,6 +111,12 @@ $headings-font-family: 'Abril Fatface';
 $headings-color: var(--dark);
 $headings-margin-bottom: $spacer;
 $paragraph-margin-bottom: 1.75em;
+
+$hr-border-color: var(--gray-300);
+
+// Tables
+//
+$table-border-color: $hr-border-color;
 
 // Buttons + Forms
 //
@@ -155,6 +167,7 @@ $popover-max-width: none;
 $card-spacer-y: $spacer;
 $card-spacer-x: $spacer;
 $card-border-width: 0;
+$card-bg: var(--white);
 
 // Accounts
 //

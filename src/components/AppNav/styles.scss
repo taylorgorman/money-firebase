@@ -1,6 +1,9 @@
 @import '../../styles/start';
 
 .app-nav {
+  $app-nav-border: solid 1px $hr-border-color;
+  $app-nav-active-color: var(--success);
+
   position: fixed;
   z-index: $zindex-fixed;
   bottom: 0;
@@ -30,11 +33,11 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        background-color: var(--success);
+        background-color: $app-nav-active-color;
       }
     }
     &.active {
-      color: var(--success) !important;
+      color: $app-nav-active-color !important;
     }
   }
   hr {
@@ -44,7 +47,7 @@
   @media ( max-width: $app-ui-breakpoint - 1 ) {
     width: 100%;
     display: flex;
-    border-top: solid 1px var(--gray-200);
+    border-top: $app-nav-border;
     text-align: center;
 
     a {
@@ -101,7 +104,7 @@
     width: $app-nav-width-md;
     height: 100%;
     left: $app-header-width-md;
-    border-right: solid 1px var(--gray-200);
+    border-right: $app-nav-border;
 
     a {
       width: calc( 100% - 1em );
@@ -122,8 +125,8 @@
         }
       }
       &:hover {
-        color: var(--dark);
-        background-color: var(--gray-200);
+        color: var(--black);
+        background-color: var(--white);
         border-radius: 0 $border-radius $border-radius 0;
       }
       &.active {
