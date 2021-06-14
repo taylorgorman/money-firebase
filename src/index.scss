@@ -2,6 +2,8 @@
 
 @import '~bootstrap/scss/bootstrap';
 
+@import './styles/css-variables';
+@import './styles/dark-mode';
 @import './styles/bootstrap';
 @import './styles/global';
 @import './styles/firebase';

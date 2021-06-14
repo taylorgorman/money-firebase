@@ -3,7 +3,6 @@
 //
 $gray-hue: 237;
 $gray-saturation: 8;
-$white: #ffffff;
 $gray-100: hsl($gray-hue, $gray-saturation, 95);
 $gray-200: hsl($gray-hue, $gray-saturation, 89);
 $gray-300: hsl($gray-hue, $gray-saturation, 78);
@@ -14,6 +13,7 @@ $gray-700: hsl($gray-hue, $gray-saturation, 43);
 $gray-800: hsl($gray-hue, $gray-saturation, 33);
 $gray-900: hsl($gray-hue, $gray-saturation, 24);
 $black: hsl($gray-hue, $gray-saturation, 15);
+$white: #ffffff;
 
 $forest: hsl(180, 90, 20);
 $yellow: hsl(45, 78, 73);
@@ -47,8 +47,8 @@ $enable-shadows: true;
 
 // Body
 //
-$body-bg: $gray-100;
-$body-color: $gray-700;
+$body-bg: var(--gray-100);
+$body-color: var(--gray-700);
 
 // App UI
 $app-ui-breakpoint: 800px;
@@ -85,7 +85,7 @@ $box-shadow-lg: 0 .3em 2rem rgba($gray-800, .2);
 
 // Links
 //
-$link-color: $forest;
+$link-color: var(--forest);
 $link-hover-color: $link-color;
 $link-hover-decoration: none;
 
@@ -102,7 +102,7 @@ $font-family-base: $font-family-serif;
 $font-family-ui: $font-family-sans-serif;
 
 $headings-font-family: 'Abril Fatface';
-$headings-color: $dark;
+$headings-color: var(--dark);
 $headings-margin-bottom: $spacer;
 $paragraph-margin-bottom: 1.75em;
 

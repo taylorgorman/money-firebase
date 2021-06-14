@@ -30,11 +30,11 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        background-color: $success;
+        background-color: var(--success);
       }
     }
     &.active {
-      color: $success !important;
+      color: var(--success) !important;
     }
   }
   hr {
@@ -44,7 +44,7 @@
   @media ( max-width: $app-ui-breakpoint - 1 ) {
     width: 100%;
     display: flex;
-    border-top: solid 1px $gray-200;
+    border-top: solid 1px var(--gray-200);
     text-align: center;
 
     a {
@@ -101,7 +101,7 @@
     width: $app-nav-width-md;
     height: 100%;
     left: $app-header-width-md;
-    border-right: solid 1px $gray-200;
+    border-right: solid 1px var(--gray-200);
 
     a {
       width: calc( 100% - 1em );
@@ -122,8 +122,8 @@
         }
       }
       &:hover {
-        color: $dark;
-        background-color: mix( $gray-200, $gray-100 );
+        color: var(--dark);
+        background-color: var(--gray-200);
         border-radius: 0 $border-radius $border-radius 0;
       }
       &.active {
