@@ -1,0 +1,56 @@
+
+@function lightness-inverted($color) {
+  @return 100% - lightness($color)
+};
+:root {
+  @media (prefers-color-scheme: dark) {
+
+    // Colors
+    @each $name, $color in $grays {
+      --gray-#{$name}: #{change-color(
+        $color, $lightness: lightness-inverted(
+          map-get( $grays, $name )
+        )
+      )};
+      .bg-gray-#{$name} {
+        background-color: var(--gray-#{$name});
+      }
+    }
+    @each $name, $color in $colors {
+      --#{$name}: #{change-color(
+        $color, $lightness: lightness-inverted(
+          map-get( $colors, $name )
+        )
+      )};
+      .bg-#{$name} {
+        background-color: var(--#{$name}) !important;
+      }
+    }
+    @each $name, $color in $theme-colors {
+      --#{$name}: #{change-color(
+        $color, $lightness: lightness-inverted(
+          map-get( $theme-colors, $name )
+        )
+      )};
+      .bg-#{$name} {
+        background-color: var(--#{$name}) !important;
+      }
+    }
+    --black: #{adjust-color($black,
+      $lightness: lightness-inverted($dark),
+    )};
+    .bg-black {
+      background-color: var(--black);
+    }
+    --white: #{$black};
+    --light: #{$black};
+    .bg-white {
+      background-color: var(--white);
+    }
+    --dark: #{change-color($dark,
+      $lightness: lightness-inverted($dark),
+      $saturation: saturation($dark) - 10
+    )};
+
+  }
+}

@@ -15,6 +15,9 @@
   line-height: 1;
   text-align: center;
 
+  @media (prefers-color-scheme: dark) {
+    background-color: darken($primary, 12)
+  }
   .brand {
     color: inherit;
     font-family: inherit;
