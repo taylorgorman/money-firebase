@@ -4,6 +4,8 @@
 };
 :root {
   @media (prefers-color-scheme: dark) {
+
+    // Colors
     @each $name, $color in $grays {
       --gray-#{$name}: #{change-color(
         $color, $lightness: lightness-inverted(
@@ -41,15 +43,14 @@
       background-color: var(--black);
     }
     --white: #{$black};
+    --light: #{$black};
     .bg-white {
       background-color: var(--white);
     }
-    // --success: #{adjust-color($success,
-    //   $lightness: 10, $saturation: 10
-    // )};
     --dark: #{change-color($dark,
       $lightness: lightness-inverted($dark),
       $saturation: saturation($dark) - 10
     )};
+
   }
 }

@@ -21,6 +21,7 @@
     @extend %remove-link-decoration;
     display: block;
     flex-grow: 1;
+    color: var(--gray-900);
 
     .inner {
       display: inline-block;
