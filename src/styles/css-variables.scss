@@ -3,4 +3,12 @@
   @each $name, $color in $grays {
     --gray-#{$name}: #{$color};
   }
+  @each $name, $color in $theme-colors {
+    .btn-#{$name} {
+      background-color: var(--#{$name});
+    }
+  }
+  .btn-light {
+    color: var(--body-color)
+  }
 }

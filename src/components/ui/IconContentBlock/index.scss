@@ -1,0 +1,21 @@
+@import '../../../styles/start.scss';
+
+.icon-content-block {
+  background-color: var(--gray-150);
+  font-size: $font-size-lg;
+  text-align: center;
+  padding: 1px;
+  border-radius: $border-radius-lg;
+  padding: $spacer;
+  font-style: italic;
+
+  p {
+    margin: 1em 0;
+  }
+  svg {
+    width: 3em;
+    height: 3em;
+    fill: var(--info);
+    opacity: .5;
+  }
+}

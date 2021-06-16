@@ -1,5 +1,5 @@
 import {
-  Popover, OverlayTrigger, Row, Col, Form,
+  Popover, OverlayTrigger, Row, Col, Form, Button,
 } from 'react-bootstrap'
 import { GearFill } from 'react-bootstrap-icons'
 
@@ -8,14 +8,25 @@ import { dashed } from '../../../utilities/formatString'
 
 import './styles.scss'
 
-export default function PageHeading( { children, subheading, settings } ) {
+export default function PageHeading( {
+  children,
+  subheading,
+  buttonText = 'Add New',
+  buttonOnClick,
+  settings,
+} ) {
   return (
     <div className="page-heading">
-      <HeadingSubheading
-        heading={ children }
-        subheading={ subheading }
-        Tag="h1"
-      />
+      <div className="d-flex align-items-center flex-grow-1">
+        <HeadingSubheading
+          heading={ children }
+          subheading={ subheading }
+          Tag="h1"
+        />
+        { buttonText && buttonOnClick && (
+          <Button onClick={ buttonOnClick } size="sm" variant="light">{ buttonText }</Button>
+        ) }
+      </div>
       { settings && <PageSettings { ...{ settings } } /> }
     </div>
   )

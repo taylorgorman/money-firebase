@@ -41,6 +41,7 @@
     // Other
     "semi": ["error", "never"],
     "import/prefer-default-export": "off",
-    "no-return-await": "off"
+    "no-return-await": "off",
+    "no-shadow": "off"
   }
 }

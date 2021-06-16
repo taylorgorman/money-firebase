@@ -4,6 +4,9 @@
   display: flex;
   align-items: baseline;
 
+  .heading {
+    margin-bottom: .15em;
+  }
   .subheading {
     margin: 0 0 0 $spacer * .5;
   }

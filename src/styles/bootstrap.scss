@@ -54,7 +54,8 @@ ul, ol {
 
 // Links
 //
-a {
+a,
+.btn-link {
   $link-bg-color: rgba($green, .25);
 
   background: linear-gradient(
@@ -98,6 +99,18 @@ a {
   &.focus {
     box-shadow: $input-btn-focus-box-shadow;
   }
+}
+.btn-link {
+  padding: 0;
+  font-family: $font-family-base;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  line-height: inherit;
+  vertical-align: baseline;
+  letter-spacing: inherit;
+  border: none;
+  border-radius: inherit;
 }
 
 // Forms

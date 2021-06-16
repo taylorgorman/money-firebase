@@ -7,8 +7,10 @@ export default function HeadingSubheading( {
 } ) {
   return (
     <div className="heading-subheading">
-      <Tag>{ heading }</Tag>
-      <p className="subheading"><em>{ subheading }</em></p>
+      <Tag className="heading">{ heading }</Tag>
+      { subheading && (
+        <p className="subheading"><em>{ subheading }</em></p>
+      ) }
     </div>
   )
 }
