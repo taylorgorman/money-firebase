@@ -118,6 +118,9 @@ a,
 
 // Forms
 //
+form .btn[type=submit] {
+  margin-right: $spacer / 2;
+}
 .form-check-input,
 .form-check-label {
   cursor: pointer;
@@ -208,6 +211,12 @@ a.list-group-item {
     font-size: .9em;
     margin-top: .5em;
   }
+}
+
+// Alerts
+//
+.alert {
+  font-style: italic;
 }
 
 // Cards

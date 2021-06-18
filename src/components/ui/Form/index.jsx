@@ -1,5 +1,6 @@
 import { Formik } from 'formik'
-import { Button, Form as BsForm } from 'react-bootstrap'
+import { useState } from 'react'
+import { Alert, Button, Form as BsForm } from 'react-bootstrap'
 import * as Yup from 'yup'
 
 import { dashed } from '../../../utilities/formatString'
@@ -23,6 +24,9 @@ export default function Form( {
   submitButtonText = 'Submit',
   onSubmit,
 } ) {
+  const [formMessageVariant, setFormMessageVariant] = useState( 'info' )
+  const [formMessageText, setFormMessageText] = useState( '' )
+
   // field fallbacks
   const controls = fields.map( ( field ) => ( {
     ...field,
@@ -48,13 +52,18 @@ export default function Form( {
     } )
   ), {} ) )
 
+  function setFormMessage( variant, text ) {
+    setFormMessageVariant( variant )
+    setFormMessageText( text )
+  }
+
   // render
   return (
     <Formik
       initialValues={ values }
       validationSchema={ validationSchema }
       onSubmit={ ( values, { setSubmitting } ) => {
-        onSubmit( values )
+        onSubmit( values, setFormMessage )
         setSubmitting( false )
       } }
     >
@@ -125,9 +134,14 @@ export default function Form( {
               </BsForm.Group>
             )
           } ) }
-          <Button variant="primary" type="submit" disabled={ isSubmitting }>
-            { submitButtonText }
-          </Button>
+          <div className="d-flex align-items-start">
+            <Button variant="primary" type="submit" disabled={ isSubmitting }>
+              { submitButtonText }
+            </Button>
+            { formMessageText && (
+              <Alert variant={ formMessageVariant }>{ formMessageText }</Alert>
+            ) }
+          </div>
         </BsForm>
       ) }
     </Formik>

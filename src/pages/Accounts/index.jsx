@@ -164,13 +164,29 @@ function ModalAddAccount( { show, onHide } ) {
             },
             {
               label: 'Description',
-              validation: Yup.string().max( 40, 'Maximum description length is 40 characters' ),
+              validation: Yup.string().max( 50, 'Maximum description length is 40 characters' ),
+            },
+            {
+              type: 'number',
+              label: 'Closing balance',
+              validation: Yup.number()
+                .typeError( 'Balance must a number' )
+                .required( 'Required' ),
+            },
+            {
+              id: 'closing-balance-date',
+              label: 'On date',
+              validation: Yup.date().required( 'Required' ),
             },
           ] }
           submitButtonText="Save"
-          onSubmit={ ( values ) => {
-            console.log( 'ModalAddAccount onSubmit values', values )
-            createData( 'accounts', values )
+          onSubmit={ async ( values, setFormMessage ) => {
+            try {
+              await createData( 'accounts', values )
+              onHide()
+            } catch ( error ) {
+              setFormMessage( 'danger', error )
+            }
           } }
         />
       </Modal.Body>
