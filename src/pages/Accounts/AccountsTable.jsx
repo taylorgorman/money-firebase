@@ -1,8 +1,11 @@
 import { Badge, Table } from 'react-bootstrap'
-import data from './data.json'
 import Currency from '../../components/ui/Currency'
 
-export default function AccountsTable( { showNetWorth } ) {
+export default function AccountsTable( {
+  showNetWorth,
+  accounts,
+  // sortBy,
+} ) {
   return (
     <Table>
       <thead>
@@ -14,9 +17,9 @@ export default function AccountsTable( { showNetWorth } ) {
         </tr>
       </thead>
       <tbody>
-        { data.map( ( account ) => (
+        { accounts.map( ( account ) => (
           <tr key={ account.name }>
-            <td className="name">{ account.name }</td>
+            <td className="name">{ account.nickname }</td>
             <td className="bank">{ account.bank }</td>
             <td className="type"><Badge variant="light">{ account.type }</Badge></td>
             <td className="balance" style={ { maxWidth: '5em' } }>
@@ -32,7 +35,9 @@ export default function AccountsTable( { showNetWorth } ) {
           <th aria-label="no content" />
           <th aria-label="no content" />
           <th>
-            <Currency amount={ data.reduce( ( total, account ) => total + account.balance, 0 ) } />
+            <Currency
+              amount={ accounts.reduce( ( total, account ) => total + account.balance, 0 ) }
+            />
           </th>
         </tr>
       </tfoot>
