@@ -33,7 +33,7 @@ export default function Accounts() {
   const [layout, setLayout] = useState( settings['accounts-layout'] || 'Rows' )
   const [sortBy, setSortBy] = useState( settings['accounts-sortBy'] || 'Amount' )
   const [showNetWorth, setShowNetWorth] = useState( settings['accounts-showNetWorth'] || true )
-  const [showModalAddAccount, setShowModalAddAccount] = useState( true )
+  const [showModalAddAccount, setShowModalAddAccount] = useState( false )
   const [accounts, loading, error] = retrieveData( 'accounts' )
 
   useEffect( () => {
