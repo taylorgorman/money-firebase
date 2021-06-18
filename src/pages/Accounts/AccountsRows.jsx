@@ -13,7 +13,7 @@ export default function AccountsRows( {
     <div className="accounts-rows">
       { accounts.map( ( account ) => (
         <>
-          <Card body className="card-account account-row" key={ account.name }>
+          <Card body className="card-account account-row" key={ account.nickname }>
             <span className="flex-item name-bank">
               { account.nickname }
               <span className="bank">{ account.bank }</span>
@@ -22,17 +22,17 @@ export default function AccountsRows( {
               <Badge variant="light">{ account.type }</Badge>
             </span>
             <AreaChart className="flex-item" />
-            <Currency className="flex-item" amount={ account.balance } />
+            <Currency className="flex-item" amount={ account['closing-balance'] } />
           </Card>
-          { showNetWorth && (
-          <div className="total">
-            <Currency
-              amount={ accounts.reduce( ( total, account ) => total + account.balance, 0 ) }
-            />
-          </div>
-          ) }
         </>
       ) ) }
+      { showNetWorth && (
+      <div className="total">
+        <Currency
+          amount={ accounts.reduce( ( total, account ) => total + account['closing-balance'], 0 ) }
+        />
+      </div>
+      ) }
     </div>
   )
 }

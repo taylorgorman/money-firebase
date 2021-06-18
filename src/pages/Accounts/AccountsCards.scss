@@ -2,7 +2,18 @@
 
 .account-card {
   .badge {
-    margin: 0 0 .75em -.25em;
+    margin-left: -.25em;
+  }
+  .name {
+    margin: 0;
+    font-family: $font-family-sans-serif;
+    font-weight: bold;
+  }
+  .bank {
+    margin-top: .4em;
+  }
+  .description {
+    margin-top: .5em;
   }
   .area-chart {
     height: 5em;
@@ -11,5 +22,6 @@
   }
   .currency {
     margin-left: auto;
+    width: auto;
   }
 }

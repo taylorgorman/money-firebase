@@ -17,14 +17,13 @@ export default function AccountsCards( {
         { accounts.map( ( account ) => (
           <Col md={ 6 } xl={ 4 } key={ account.name }>
             <Card body className="card-account account-card">
-              <div>
-                <Badge className="type" variant="light">{ account.type }</Badge>
-              </div>
-              <div className="name">{ account.nickname }</div>
+              <h3 className="h5 name">{ account.nickname }</h3>
               <div className="bank">{ account.bank }</div>
+              <div className="description">{ account.description }</div>
               <AreaChart />
-              <div>
-                <Currency className="balance" amount={ account.balance } />
+              <div className="d-flex align-items-center justify-content-between">
+                <Badge className="type" variant="light">{ account.type }</Badge>
+                <Currency className="balance" amount={ account['closing-balance'] } />
               </div>
             </Card>
           </Col>
@@ -33,7 +32,7 @@ export default function AccountsCards( {
       { showNetWorth && (
         <div className="total">
           <Currency
-            amount={ accounts.reduce( ( total, account ) => total + account.balance, 0 ) }
+            amount={ accounts.reduce( ( total, account ) => total + account['closing-balance'], 0 ) }
           />
         </div>
       ) }

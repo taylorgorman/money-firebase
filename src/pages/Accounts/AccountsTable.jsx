@@ -23,7 +23,7 @@ export default function AccountsTable( {
             <td className="bank">{ account.bank }</td>
             <td className="type"><Badge variant="light">{ account.type }</Badge></td>
             <td className="balance" style={ { maxWidth: '5em' } }>
-              <Currency amount={ account.balance } />
+              <Currency amount={ account['closing-balance'] } />
             </td>
           </tr>
         ) ) }
@@ -36,7 +36,7 @@ export default function AccountsTable( {
           <th aria-label="no content" />
           <th>
             <Currency
-              amount={ accounts.reduce( ( total, account ) => total + account.balance, 0 ) }
+              amount={ accounts.reduce( ( total, account ) => total + account['closing-balance'], 0 ) }
             />
           </th>
         </tr>
