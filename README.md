@@ -32,6 +32,9 @@
 
 ## To Do
 - [ ] When update setting, if setting doesn't exist, create it. Currently getting Firebase error bc user can't update documents they don't own and when user is created, setting doesn't exist for them.
+- [ ] Fetch settings app-wide, use live collection so changes reflect immediately, move settings updates to PageHeading
+- [ ] Cache data fetching
+- [ ] Tell user if can't fetch data
 - [ ] Write function to populate database on start
 - [ ] Create transactions (this is the whole thing I need rn to get data in)
 - [ ] Update transactions
