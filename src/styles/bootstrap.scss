@@ -222,3 +222,28 @@ a.list-group-item {
     background-color: var(--gray-100);
   }
 }
+
+// Modals
+//
+.modal-backdrop {
+  backdrop-filter: blur(5px);
+}
+.modal-content {
+  box-shadow: none;
+  background: none;
+  border-radius: none;
+}
+.modal-body {
+  box-shadow: $modal-content-box-shadow-xs;
+  background: $modal-content-bg;
+  border-radius: $modal-content-border-radius;
+
+  > :first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
