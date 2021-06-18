@@ -11,6 +11,11 @@ export function DataProvider( { children } ) {
   const { firebase, firestore, user } = useFirebase()
   const [settings, settingsLoading, settingsError] = retrieveSettings()
 
+  /**
+   * @param {string} collectionName
+   * @param {Object} docData
+   * @param {string} docId
+   */
   function createData( collectionName, docData, docId ) {
     const collection = firestore.collection( collectionName )
     const data = {

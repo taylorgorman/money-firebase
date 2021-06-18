@@ -134,6 +134,7 @@ export default function Accounts() {
 }
 
 function ModalAddAccount( { show, onHide } ) {
+  const { createData } = useData()
   return (
     <Modal { ...{ show, onHide } }>
       <Modal.Header closeButton>
@@ -143,6 +144,7 @@ function ModalAddAccount( { show, onHide } ) {
         <Form
           fields={ [
             {
+              id: 'type',
               label: 'Account type',
               type: 'select',
               options: [
@@ -168,6 +170,7 @@ function ModalAddAccount( { show, onHide } ) {
           submitButtonText="Save"
           onSubmit={ ( values ) => {
             console.log( 'ModalAddAccount onSubmit values', values )
+            createData( 'accounts', values )
           } }
         />
       </Modal.Body>

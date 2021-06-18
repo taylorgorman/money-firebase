@@ -15,7 +15,7 @@ export default function AccountsRows( {
         <>
           <Card body className="card-account account-row" key={ account.name }>
             <span className="flex-item name-bank">
-              { account.name }
+              { account.nickname }
               <span className="bank">{ account.bank }</span>
             </span>
             <span className="flex-item type">
