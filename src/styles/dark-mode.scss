@@ -51,6 +51,9 @@
       $lightness: lightness-inverted($dark),
       $saturation: saturation($dark) - 10
     )};
+    .btn-primary {
+      background-color: $primary;
+    }
 
   }
 }

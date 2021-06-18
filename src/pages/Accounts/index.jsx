@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import * as Yup from 'yup'
+import { Button, Modal } from 'react-bootstrap'
+import { SlashCircle } from 'react-bootstrap-icons'
 
 import './index.scss'
-import { Button } from 'react-bootstrap'
-import { SlashCircle } from 'react-bootstrap-icons'
 import Layout from '../../components/Layout'
 import PageHeading from '../../components/ui/PageHeading'
 import Section from '../../components/ui/Section'
@@ -11,6 +12,7 @@ import AccountsCards from './AccountsCards'
 import AccountsTable from './AccountsTable'
 import { useData } from '../../utilities/DataContext'
 import IconContentBlock from '../../components/ui/IconContentBlock'
+import Form from '../../components/ui/Form'
 
 const Loading = () => (
   <p>Loading accounts...</p>
@@ -27,11 +29,11 @@ const Error = ( error ) => (
 )
 
 export default function Accounts() {
-  const { settings, updateSetting } = useData()
+  const { settings, updateSetting, retrieveData } = useData()
   const [layout, setLayout] = useState( settings['accounts-layout'] || 'Rows' )
   const [sortBy, setSortBy] = useState( settings['accounts-sortBy'] || 'Amount' )
   const [showNetWorth, setShowNetWorth] = useState( settings['accounts-showNetWorth'] || true )
-  const { retrieveData } = useData()
+  const [showModalAddAccount, setShowModalAddAccount] = useState( true )
   const [accounts, loading, error] = retrieveData( 'accounts' )
 
   useEffect( () => {
@@ -45,7 +47,7 @@ export default function Accounts() {
   }, [showNetWorth] )
 
   function handleAddAccount() {
-    alert( 'add account' )
+    setShowModalAddAccount( true )
   }
 
   const accountsLayoutProps = {
@@ -121,7 +123,54 @@ export default function Accounts() {
           )
         ) }
 
+        <ModalAddAccount
+          show={ showModalAddAccount }
+          onHide={ () => setShowModalAddAccount( false ) }
+        />
+
       </Section>
     </Layout>
+  )
+}
+
+function ModalAddAccount( { show, onHide } ) {
+  return (
+    <Modal { ...{ show, onHide } }>
+      <Modal.Header closeButton>
+        <Modal.Title>Add Account</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form
+          fields={ [
+            {
+              label: 'Account type',
+              type: 'select',
+              options: [
+                'Checking',
+                'Savings',
+                'Credit',
+              ],
+              validation: Yup.string().required( 'Required' ),
+            },
+            {
+              label: 'Nickname',
+              validation: Yup.string().required( 'Required' ),
+            },
+            {
+              label: 'Bank',
+              validation: Yup.string().required( 'Required' ),
+            },
+            {
+              label: 'Description',
+              validation: Yup.string().max( 40, 'Maximum description length is 40 characters' ),
+            },
+          ] }
+          submitButtonText="Save"
+          onSubmit={ ( values ) => {
+            console.log( 'ModalAddAccount onSubmit values', values )
+          } }
+        />
+      </Modal.Body>
+    </Modal>
   )
 }

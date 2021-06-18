@@ -112,6 +112,9 @@ a,
   border: none;
   border-radius: inherit;
 }
+.btn-light {
+  color: var(--body-color)
+}
 
 // Forms
 //
@@ -122,6 +125,19 @@ a,
 .form-check-label {
   font-family: $font-family-sans-serif;
   font-weight: bold;
+}
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  border-color: $input-border-color;
+}
+.invalid-feedback {
+  display: none;
+  margin-left: .5em;
+  font-style: italic;
+
+  .is-invalid & {
+    display: inline;
+  }
 }
 
 // List group

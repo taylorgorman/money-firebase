@@ -141,7 +141,12 @@ $form-group-margin-bottom: $paragraph-margin-bottom * .75;
 // Forms
 //
 $input-padding-x: $input-btn-padding-y * 1.25;
+$input-color: var(--body-color);
+$input-bg: var(--white);
+$input-border-color: var(--gray-400);
 $custom-select-indicator-padding: 1em;
+
+$form-feedback-font-size: 1em;
 
 // Badges
 //
@@ -173,6 +178,26 @@ $card-spacer-y: $spacer;
 $card-spacer-x: $spacer;
 $card-border-width: 0;
 $card-bg: var(--white);
+
+// Modals
+//
+$modal-content-border-width: 0;
+$modal-header-border-width: 0;
+$modal-footer-border-width: 0;
+$modal-content-bg: var(--white);
+$modal-backdrop-bg: var(--body-bg);
+$modal-backdrop-opacity: 0.9;
+$modal-content-box-shadow-xs: $box-shadow-lg;
+$modal-content-box-shadow-sm-up: $modal-content-box-shadow-xs;
+$modal-fade-transform: translate(0, 2em);
+$modal-transition: transform .3s ease-out;
+
+// Close
+//
+$close-font-size: 2rem;
+$close-font-weight: normal;
+$close-color: var(--black);
+$close-text-shadow: none;
 
 // Accounts
 //

@@ -1,5 +1,7 @@
 
 :root {
+  --body-bg: #{$body-bg};
+  --body-color: #{$body-color};
   @each $name, $color in $grays {
     --gray-#{$name}: #{$color};
   }
@@ -7,8 +9,5 @@
     .btn-#{$name} {
       background-color: var(--#{$name});
     }
-  }
-  .btn-light {
-    color: var(--body-color)
   }
 }
