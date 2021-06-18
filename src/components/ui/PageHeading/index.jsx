@@ -3,10 +3,9 @@ import {
 } from 'react-bootstrap'
 import { GearFill } from 'react-bootstrap-icons'
 
+import './styles.scss'
 import HeadingSubheading from '../HeadingSubheading'
 import { dashed } from '../../../utilities/formatString'
-
-import './styles.scss'
 
 export default function PageHeading( {
   children,
